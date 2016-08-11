@@ -1,70 +1,23 @@
-Proteus : Android Layout Engine  [![Build Status](https://travis-ci.org/flipkart-incubator/proteus.svg?branch=master)](https://travis-ci.org/flipkart-incubator/proteus)
-=====================
+<h1>
+  <img src="/assets/proteus-logo.png" width="150px">
+  : Android Layout Engine
+  <a href="https://travis-ci.org/flipkart-incubator/proteus.svg?branch=master">
+    <img src="https://travis-ci.org/flipkart-incubator/proteus.svg?branch=master" alt="Build Status">
+  </a>
+</h1>
 
-**Proteus** is an android library for achieving complete control over the visual appearance and data bindings on views/widgets rendered. It is meant to be a drop-in replacement for androids' `LayoutInflater`. **proteus** allows inflating layouts at runtime unlike the compiled XML layouts bundled in the APK.
+**Proteus** is meant to be a drop-in replacement for Android’s `LayoutInflater`; but unlike the compiled XML layouts bundled in the APK, Proteus inflates layouts at runtime.
+With Proteus, you can control your Apps layout from the backend (no WebViews). Forget the boilerplate code to `findViewById`, cast it to a `TextView`, and then `setText()`. Proteus has runtime data bindings and formatters. Plugin in your own custom views and attributes and formatters.
 
-<table>
-  <tr style="border: 0px;">
-    <td style="border: 0px;">
-      <ul class="task-list">
-        <li><a href="#how-it-works">How it works</a></li>
-        <li><a href="#installation">Installation</a></li>
-        <li><a href="#getting-started">Getting started</a></li>
-        <li><a href="#contributing">Contributing</a></li>
-        <li><a href="#license">License</a></li>
-      </ul>
-    </td>
-    <td style="width:60%; border: 0px; text-align:right;">
-      <img alt="proteus logo" src="https://github.com/flipkart-incubator/proteus/blob/master/assets/proteus-logo.png" width="250px"/>
-    </td>
-  </tr>
-</table>
+* **[Getting started](#getting-started)**
+* **[How it Works](#how-it-works)**
+* **[Resources](#resources)**
+* **[Contributing](#contributing)**
+* **[License](#license)**
 
-## How it works
+## Getting Started
 
-Instead of writing layouts in `XML`, in **proteus** layouts are defined in `JSON`, which can be used to inflate native android UI at runtime. The `JSON` layouts can be hosted anywhere (on the device, on servers, etc.).
-
-Forget the boilerplate code to `findViewById`, cast it to a `TextView`, and then `setText()`. **Proteus** has built-in [runtime data bindings](https://github.com/flipkart-incubator/proteus/wiki/Data-Bindings) and formatters. Use data bindings within the `JSON` layouts itself. You can even plugin in your custom views and attributes.
-
-#### layout
-
-```javascript
-{
-  "type": "LinearLayout",
-  "orientation": "vertical",
-  "children": [
-    {
-      "type": "TextView",
-      "text": "$user.profile.name"
-    },
-    {
-      "type": "ImageView",
-      "src": "$user.profile.imageUrl"
-    }
-  ]
-}
-```
-
-#### data
-
-```javascript
-{
-  "user": {
-    "profile": {
-      "name": "John Doe",
-      "imageUrl": "https://example.com/image.jpg"
-    }
-  }
-}
-```
-
-```java
-ProteusView view = layoutbuilder.build(parent, layout, data, null, 0);
-```
-
-## Installation
-
-### gradle
+#### gradle
 
 ```javascript
 // Add it in your root build.gradle at the end of repositories:
@@ -81,17 +34,73 @@ dependencies {
 }
 ```
 
-check it out at [jitpack](https://jitpack.io/#flipkart-incubator/proteus/4.0.0-RC1)
+#### Include as a module
 
-## Getting started
+* Clone the **proteus** in the project folder
 
-Head over to the [wiki](https://github.com/flipkart-incubator/proteus/wiki) for detailed documentation
+```javascript
+git clone https://github.com/flipkart-incubator/proteus.git
+```
 
-## Logging Support
+* Include the a project in you apps `build.gradle` file
 
-The library provides support to enable/disable logging anytime with a single line of code. By default, logging is **disabled** in the library. 
+```javascript
+dependencies {
+  compile project('proteus:library')
+}
+```
 
-To enable logging, call `ProteusConstants.setIsLoggingEnabled(true)`.
+## How it works
+
+Instead of writing layouts in `XML`, in **proteus** layouts are defined in `JSON`, which can be used to inflate native android UI at runtime. The `JSON` layouts can be hosted anywhere (on the device, on servers, etc.).
+
+#### layout
+
+```javascript
+{
+  "type": "LinearLayout",
+  "orientation": "vertical",
+  "padding": "16dp",
+  "children": [{
+    "layout_width": "200dp",
+    "gravity": "center",
+    "type": "TextView",
+    "text": "~{{user.profile.name}} ({{user.profile.experience}}$(number))"
+  }, {
+    "type": "HorizontalProgressBar",
+    "layout_width": "200dp",
+    "layout_marginTop": "8dp",
+    "max": 6000,
+    "progress": "$user.profile.experience"
+  }]
+}
+```
+
+#### data
+
+```javascript
+{
+  "user": {
+    "profile": {
+      "name": "John Doe",
+      "experience": 4192
+    }
+  }
+}
+```
+
+#### Get this
+
+<img src="/assets/example-small.png" width="300px"/>
+
+#### Change the layout and data; and get his
+
+<img src="/assets/example-full.png" width="300px"/>
+
+## Resources
+
+* [Detailed Guide](https://github.com/flipkart-incubator/proteus/wiki)
+* [API References]()
 
 ## Contributing
 
@@ -101,8 +110,8 @@ To enable logging, call `ProteusConstants.setIsLoggingEnabled(true)`.
 
 ## License
 
-[Apache v2.0](https://github.com/flipkart-incubator/proteus/blob/master/LICENSE)
+[Apache v2.0](LICENSE)
 
-## One click XML to JSON conversion plugin
+### One click XML to JSON conversion plugin
 
 Download [this plugin](https://github.com/flipkart-incubator/android-studio-proteus-plugin/blob/master/Plugin/Plugin.jar) for android studio and enable it. Once enabled, you can select any android XML layout file and go to **Tools > Convert XML to JSON**
