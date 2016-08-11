@@ -28,7 +28,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.flipkart.android.proteus.EventType;
-import com.flipkart.android.proteus.providers.Layout;
 import com.flipkart.android.proteus.builder.LayoutBuilder;
 import com.flipkart.android.proteus.processor.DimensionAttributeProcessor;
 import com.flipkart.android.proteus.processor.DrawableResourceProcessor;
@@ -64,7 +63,7 @@ public class ViewParser<V extends View> extends Parser<V> {
     private static Logger logger = LoggerFactory.getLogger(ViewParser.class);
 
     @Override
-    public ProteusView createView(ViewGroup parent, Layout layout, JsonObject data, Styles styles, int index) {
+    public ProteusView createView(ViewGroup parent, JsonObject layout, JsonObject data, Styles styles, int index) {
         return new ProteusAndroidView(parent.getContext());
     }
 
@@ -382,7 +381,7 @@ public class ViewParser<V extends View> extends Parser<V> {
                 ProteusViewManager viewManager = ((ProteusView) view).getViewManager();
                 Styles styles = viewManager.getStyles();
 
-                LayoutHandler handler = viewManager.getLayoutBuilder().getHandler(viewManager.getLayout().getType());
+                LayoutHandler handler = viewManager.getLayoutBuilder().getHandler(Utils.getPropertyAsString(viewManager.getLayout(), ProteusConstants.TYPE));
                 if (styles == null) {
                     return;
                 }
@@ -395,7 +394,7 @@ public class ViewParser<V extends View> extends Parser<V> {
                 }
             }
 
-            private void process(Map<String, JsonElement> style, Layout layout, ProteusView proteusView, LayoutHandler handler, LayoutBuilder builder) {
+            private void process(Map<String, JsonElement> style, JsonObject layout, ProteusView proteusView, LayoutHandler handler, LayoutBuilder builder) {
                 for (Map.Entry<String, JsonElement> attribute : style.entrySet()) {
                     if (layout.has(attribute.getKey())) {
                         continue;

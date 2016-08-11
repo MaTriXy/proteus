@@ -20,7 +20,7 @@ import android.graphics.Bitmap;
 import android.view.View;
 
 import com.flipkart.android.proteus.ImageLoaderCallback;
-import com.flipkart.android.proteus.providers.Layout;
+import com.google.gson.JsonObject;
 
 import java.util.concurrent.Future;
 
@@ -43,5 +43,5 @@ public interface BitmapLoader {
      * @param imageLoaderCallback
      * @param layout
      */
-    void getBitmap(String imageUrl, ImageLoaderCallback imageLoaderCallback, View view, Layout layout);
+    void getBitmap(String imageUrl, ImageLoaderCallback imageLoaderCallback, View view, JsonObject layout);
 }

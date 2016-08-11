@@ -31,8 +31,6 @@ import android.widget.FrameLayout;
 
 import com.flipkart.android.proteus.EventType;
 import com.flipkart.android.proteus.ImageLoaderCallback;
-import com.flipkart.android.proteus.providers.Layout;
-import com.flipkart.android.proteus.providers.LayoutImpl;
 import com.flipkart.android.proteus.builder.DataAndViewParsingLayoutBuilder;
 import com.flipkart.android.proteus.builder.LayoutBuilderCallback;
 import com.flipkart.android.proteus.builder.LayoutBuilderFactory;
@@ -68,7 +66,7 @@ public class ProteusActivity extends AppCompatActivity {
         }
 
         @Override
-        public void getBitmap(String imageUrl, final ImageLoaderCallback callback, View view, Layout layout) {
+        public void getBitmap(String imageUrl, final ImageLoaderCallback callback, View view, JsonObject layout) {
             URL url;
 
             try {
@@ -108,7 +106,7 @@ public class ProteusActivity extends AppCompatActivity {
 
         @Nullable
         @Override
-        public ProteusView onUnknownViewType(String type, View parent, Layout layout, JsonObject data, int index, Styles styles) {
+        public ProteusView onUnknownViewType(String type, View parent, JsonObject layout, JsonObject data, int index, Styles styles) {
             return null;
         }
 
@@ -150,8 +148,7 @@ public class ProteusActivity extends AppCompatActivity {
         // This data should come from remote server if we wish to change layouts without app updates.
         Styles styles = gson.fromJson(getJsonFromFile(R.raw.styles).getAsJsonObject(), Styles.class);
         Map<String, JsonObject> layoutProvider = getProviderFromFile(R.raw.layout_provider);
-
-        LayoutImpl pageLayout = new LayoutImpl(getJsonFromFile(R.raw.page_layout).getAsJsonObject());
+        JsonObject pageLayout = getJsonFromFile(R.raw.page_layout).getAsJsonObject();
 
         JsonObject data = getJsonFromFile(R.raw.data_init).getAsJsonObject();
 

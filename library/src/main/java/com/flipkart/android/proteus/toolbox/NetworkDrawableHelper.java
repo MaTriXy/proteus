@@ -26,7 +26,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 
 import com.flipkart.android.proteus.ImageLoaderCallback;
-import com.flipkart.android.proteus.providers.Layout;
+import com.google.gson.JsonObject;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Future;
@@ -43,9 +43,10 @@ public class NetworkDrawableHelper {
     private final View view;
     private final DrawableCallback callback;
     private final BitmapLoader bitmapLoader;
-    private final Layout layout;
+    private final JsonObject layout;
 
     /**
+     * @param context         Android Context
      * @param view            The view which is going to show the drawable. This view will be used to start and stop image loading when view is added and removed from window. Only used when <code>loadImmediately</code> is set to false. Will also work if view is set to null.
      * @param url             The url to load
      * @param loadImmediately Set this to true to load the image on the calling thread (synchronous). If false, volley's thread will be used.
@@ -53,7 +54,7 @@ public class NetworkDrawableHelper {
      * @param layout
      */
     public NetworkDrawableHelper(final View view, final String url, boolean loadImmediately, DrawableCallback callback,
-                                 BitmapLoader bitmapLoader, Layout layout) {
+                                 BitmapLoader bitmapLoader, JsonObject layout) {
         this.view = view;
         this.callback = callback;
         this.bitmapLoader = bitmapLoader;

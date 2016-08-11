@@ -20,7 +20,6 @@ package com.flipkart.android.proteus.parser.custom;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
 
-import com.flipkart.android.proteus.providers.Layout;
 import com.flipkart.android.proteus.parser.Attributes;
 import com.flipkart.android.proteus.parser.Parser;
 import com.flipkart.android.proteus.parser.WrappableParser;
@@ -40,7 +39,7 @@ public class ScrollViewParser<T extends ScrollView> extends WrappableParser<T> {
     }
 
     @Override
-    public ProteusView createView(ViewGroup parent, Layout layout, JsonObject data, Styles styles, int index) {
+    public ProteusView createView(ViewGroup parent, JsonObject layout, JsonObject data, Styles styles, int index) {
         return new ProteusScrollView(parent.getContext());
     }
 
