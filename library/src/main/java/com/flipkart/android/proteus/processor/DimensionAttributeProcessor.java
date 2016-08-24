@@ -37,8 +37,8 @@ public abstract class DimensionAttributeProcessor<T extends View> extends Attrib
 
     /**
      * @param view  View
-     * @param key   Attribute Key
-     * @param value Attribute Value
+     * @param key   Attributes Key
+     * @param value Attributes Value
      */
     public abstract void setDimension(float dimension, T view, String key, JsonElement value);
 }

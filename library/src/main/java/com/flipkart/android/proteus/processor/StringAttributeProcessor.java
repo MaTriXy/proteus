@@ -67,8 +67,8 @@ public abstract class StringAttributeProcessor<V extends View> extends Attribute
     }
 
     /**
-     * @param attributeKey   Attribute Key
-     * @param attributeValue Attribute Value
+     * @param attributeKey   Attributes Key
+     * @param attributeValue Attributes Value
      * @param view           View
      */
     public abstract void handle(String attributeKey, String attributeValue, V view);
