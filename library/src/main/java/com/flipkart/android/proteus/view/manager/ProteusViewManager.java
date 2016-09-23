@@ -19,13 +19,14 @@ package com.flipkart.android.proteus.view.manager;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.flipkart.android.proteus.DataContext;
 import com.flipkart.android.proteus.binding.Binding;
 import com.flipkart.android.proteus.builder.LayoutBuilder;
 import com.flipkart.android.proteus.parser.LayoutHandler;
-import com.flipkart.android.proteus.toolbox.Styles;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.flipkart.android.proteus.providers.AttributeValue;
+import com.flipkart.android.proteus.providers.Data;
+import com.flipkart.android.proteus.providers.DataContext;
+import com.flipkart.android.proteus.providers.Layout;
+import com.flipkart.android.proteus.providers.Styles;
 
 /**
  * ProteusViewManager
@@ -39,10 +40,11 @@ public interface ProteusViewManager {
      *
      * @param data New data for the view
      */
-    void update(@Nullable JsonObject data);
+    void update(@Nullable Data data);
 
     /**
      * Set the {@link View} which will be managed.
+     *
      * @param view The view to manage.
      */
     void setView(View view);
@@ -60,14 +62,14 @@ public interface ProteusViewManager {
      *
      * @return Returns the layout used to build this {@link android.view.View}
      */
-    JsonObject getLayout();
+    Layout getLayout();
 
     /**
      * Sets the layout used to build this {@link android.view.View}.
      *
      * @param layout The layout used to build this {@link android.view.View}
      */
-    void setLayout(JsonObject layout);
+    void setLayout(Layout layout);
 
     /**
      * Returns the current {@link Styles} set in this {@link android.view.View}.
@@ -84,9 +86,9 @@ public interface ProteusViewManager {
 
     int getUniqueViewId(String id);
 
-    JsonElement get(String dataPath, int index);
+    AttributeValue get(String dataPath, int index);
 
-    void set(String dataPath, JsonElement newValue);
+    void set(String dataPath, AttributeValue newValue);
 
     void set(String dataPath, String newValue);
 
@@ -95,9 +97,9 @@ public interface ProteusViewManager {
     void set(String dataPath, boolean newValue);
 
     @Nullable
-    JsonObject getChildLayout();
+    Layout getChildLayout();
 
-    void setChildLayout(@Nullable JsonObject childLayout);
+    void setChildLayout(@Nullable Layout childLayout);
 
     DataContext getDataContext();
 
@@ -126,10 +128,10 @@ public interface ProteusViewManager {
 
     interface OnUpdateDataListener {
 
-        JsonObject onBeforeUpdateData(@Nullable JsonObject data);
+        Data onBeforeUpdateData(@Nullable Data data);
 
-        JsonObject onAfterDataContext(@Nullable JsonObject data);
+        Data onAfterDataContext(@Nullable Data data);
 
-        void onUpdateDataComplete(@Nullable JsonObject data);
+        void onUpdateDataComplete(@Nullable Data data);
     }
 }

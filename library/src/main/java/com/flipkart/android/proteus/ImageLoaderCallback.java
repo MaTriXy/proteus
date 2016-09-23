@@ -23,7 +23,6 @@ import android.graphics.drawable.Drawable;
  * Created by prateek.dixit on 1/29/15.
  */
 public interface ImageLoaderCallback {
-
     /**
      * Called when asynchronously loading an image and when response is not null
      *

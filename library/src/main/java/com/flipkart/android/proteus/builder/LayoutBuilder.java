@@ -20,12 +20,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.flipkart.android.proteus.parser.LayoutHandler;
+import com.flipkart.android.proteus.providers.AttributeKeyValue;
+import com.flipkart.android.proteus.providers.Data;
+import com.flipkart.android.proteus.providers.Layout;
+import com.flipkart.android.proteus.providers.Styles;
 import com.flipkart.android.proteus.toolbox.BitmapLoader;
 import com.flipkart.android.proteus.toolbox.IdGenerator;
-import com.flipkart.android.proteus.toolbox.Styles;
 import com.flipkart.android.proteus.view.ProteusView;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 
 /**
  * @author kirankumar
@@ -64,19 +65,19 @@ public interface LayoutBuilder {
      * @param view    The view to handle the attribute on.
      * @return true if the attribute is processed false otherwise.
      */
-    boolean handleAttribute(LayoutHandler handler, ProteusView view, String attribute, JsonElement value);
+    boolean handleAttribute(LayoutHandler handler, ProteusView view, AttributeKeyValue attributeKeyValue);
 
     /**
-     * This methods builds a {@link ProteusView} from a layout {@link JsonObject} and data {@link JsonObject}.
+     * This methods builds a {@link ProteusView} from a layout {@link Layout} and data {@link Data}.
      *
      * @param parent The intended parent view for the {@link View} that will be built.
-     * @param layout The {@link JsonObject} which defines the layout for the {@link View} to be built.
-     * @param data   The {@link JsonObject} which will be used to replace bindings with values in the {@link View}.
+     * @param layout The {@link Layout} which defines the layout for the {@link View} to be built.
+     * @param data   The {@link Data} which will be used to replace bindings with values in the {@link View}.
      * @param index  The index of this view in its parent. Pass 0 if it has no parent.
      * @param styles The styles to be applied to the view.
      * @return A {@link ProteusView} with the built view, an array of its children and optionally its bindings.
      */
-    ProteusView build(ViewGroup parent, JsonObject layout, JsonObject data, int index, Styles styles);
+    ProteusView build(ViewGroup parent, Layout layout, Data data, int index, Styles styles);
 
     /**
      * Give the View ID for this string. This will generally be given by the instance of ID Generator

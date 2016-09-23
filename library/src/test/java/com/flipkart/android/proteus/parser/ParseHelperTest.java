@@ -16,41 +16,10 @@
 
 package com.flipkart.android.proteus.parser;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 /**
  * ParseHelperTest
  *
  * @author aditya.sharat
  */
 public class ParseHelperTest {
-
-    @Test
-    public void testParseInt() {
-        String input;
-
-        // check 0
-        input = "0";
-        Assert.assertEquals(ParseHelper.parseInt(input), 0);
-
-        // check negative
-        input = "-1";
-        Assert.assertEquals(ParseHelper.parseInt(input), -1);
-
-        // check positive
-        input = "1";
-        Assert.assertEquals(ParseHelper.parseInt(input), 1);
-
-        // check null
-        Assert.assertEquals(ParseHelper.parseInt(null), 0);
-
-        // check "null"
-        input = "null";
-        Assert.assertEquals(ParseHelper.parseInt(input), 0);
-
-        // check random string
-        input = "blah blah";
-        Assert.assertEquals(ParseHelper.parseInt(input), 0);
-    }
 }

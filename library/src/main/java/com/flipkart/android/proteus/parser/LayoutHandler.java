@@ -19,28 +19,29 @@ package com.flipkart.android.proteus.parser;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.flipkart.android.proteus.processor.AttributeProcessor;
-import com.flipkart.android.proteus.toolbox.Styles;
+import com.flipkart.android.proteus.providers.AttributeKey;
+import com.flipkart.android.proteus.providers.AttributeKeyValue;
+import com.flipkart.android.proteus.providers.Data;
+import com.flipkart.android.proteus.providers.Layout;
+import com.flipkart.android.proteus.providers.Styles;
 import com.flipkart.android.proteus.view.ProteusView;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 
 /**
  * @author kiran.kumar
  */
 public interface LayoutHandler<V extends View> {
 
-    void onBeforeCreateView(ViewGroup parent, JsonObject layout, JsonObject data, Styles styles, int index);
+    void onBeforeCreateView(ViewGroup parent, Layout layout, Data data, Styles styles, int index);
 
-    ProteusView createView(ViewGroup parent, JsonObject layout, JsonObject data, Styles styles, int index);
+    ProteusView createView(ViewGroup parent, Layout layout, Data data, Styles styles, int index);
 
-    void onAfterCreateView(V view, ViewGroup parent, JsonObject layout, JsonObject data, Styles styles, int index);
+    void onAfterCreateView(V view, ViewGroup parent, Layout layout, Data data, Styles styles, int index);
 
     void prepareAttributeHandlers();
 
-    void addHandler(Attributes.Attribute key, AttributeProcessor<V> handler);
+    void addHandler(AttributeKey attributeKey, AttributeProcessor<V> handler);
 
-    boolean handleAttribute(V view, String attribute, JsonElement value);
+    boolean handleAttribute(V view, AttributeKeyValue attributeKeyValue);
 
     boolean handleChildren(ProteusView view);
 

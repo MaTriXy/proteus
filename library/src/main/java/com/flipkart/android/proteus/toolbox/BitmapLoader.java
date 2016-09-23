@@ -20,7 +20,7 @@ import android.graphics.Bitmap;
 import android.view.View;
 
 import com.flipkart.android.proteus.ImageLoaderCallback;
-import com.google.gson.JsonObject;
+import com.flipkart.android.proteus.providers.Layout;
 
 import java.util.concurrent.Future;
 
@@ -31,17 +31,17 @@ public interface BitmapLoader {
     /**
      * Useful for Synchronous download of bitmap. Use the returned {@link java.util.concurrent.Future#get()} to block on the download.
      *
-     * @param imageUrl
-     * @return
+     * @param imageUrl imageUrl
+     * @return Future Bitmap
      */
     Future<Bitmap> getBitmap(String imageUrl, View view);
 
     /**
      * Useful for asynchronous download of bitmap.
      *
-     * @param imageUrl
-     * @param imageLoaderCallback
-     * @param layout
+     * @param imageUrl            imageUrl
+     * @param imageLoaderCallback imageLoaderCallback
+     * @param layout              layout
      */
-    void getBitmap(String imageUrl, ImageLoaderCallback imageLoaderCallback, View view, JsonObject layout);
+    void getBitmap(String imageUrl, ImageLoaderCallback imageLoaderCallback, View view, Layout layout);
 }

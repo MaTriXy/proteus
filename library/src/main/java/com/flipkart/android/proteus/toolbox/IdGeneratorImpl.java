@@ -19,36 +19,19 @@ package com.flipkart.android.proteus.toolbox;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.reflect.TypeToken;
-
 import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * IdGeneratorImpl
- *
  * <p>
- *     An built in implementation of {@link IdGenerator} interface
+ * <p>
+ * An built in implementation of {@link IdGenerator} interface
  * </p>
  *
  * @author aditya.sharat
  */
 public class IdGeneratorImpl implements IdGenerator {
-    private static final ClassLoader ID_MAP_CLASS_LOADER = new TypeToken<Map<String, Integer>>() {
-    }.getClass().getClassLoader();
-    private final HashMap<String, Integer> idMap = new HashMap<>();
-    private final AtomicInteger sNextGeneratedId;
-
-    public IdGeneratorImpl() {
-        sNextGeneratedId = new AtomicInteger(1);
-    }
-
-    public IdGeneratorImpl(Parcel source) {
-        sNextGeneratedId = new AtomicInteger(source.readInt());
-        source.readMap(idMap, ID_MAP_CLASS_LOADER);
-    }
-
     public final static Parcelable.Creator<IdGeneratorImpl> CREATOR = new Creator<IdGeneratorImpl>() {
         @Override
         public IdGeneratorImpl createFromParcel(Parcel source) {
@@ -60,6 +43,19 @@ public class IdGeneratorImpl implements IdGenerator {
             return new IdGeneratorImpl[size];
         }
     };
+    //private static final ClassLoader ID_MAP_CLASS_LOADER = new TypeToken<Map<String, Integer>>() {
+    //}.getClass().getClassLoader();
+    private final HashMap<String, Integer> idMap = new HashMap<>();
+    private final AtomicInteger sNextGeneratedId;
+
+    public IdGeneratorImpl() {
+        sNextGeneratedId = new AtomicInteger(1);
+    }
+
+    public IdGeneratorImpl(Parcel source) {
+        sNextGeneratedId = new AtomicInteger(source.readInt());
+        //source.readMap(idMap, ID_MAP_CLASS_LOADER);
+    }
 
     /**
      * Flatten this object in to a Parcel.
