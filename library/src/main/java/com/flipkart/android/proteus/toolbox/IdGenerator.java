@@ -19,7 +19,7 @@ package com.flipkart.android.proteus.toolbox;
 import android.os.Parcelable;
 
 /**
- * IdGeneratorImpl
+ * IdGenerator
  * <p>
  * Simulates the R class. Useful to given unique ID for use in {@link android.view.View#setId(int)} method.
  * An ID which doesn't conflict with aapt's ID is ensured. Please ensure that all dynamic ID call go through
