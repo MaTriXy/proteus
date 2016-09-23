@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.flipkart.android.proteus.toolbox;
+package com.flipkart.android.proteusproto.toolbox;
 
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
@@ -27,6 +27,7 @@ import android.view.View;
 
 import com.flipkart.android.proteus.ImageLoaderCallback;
 import com.flipkart.android.proteus.providers.Layout;
+import com.flipkart.android.proteus.toolbox.BitmapLoader;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Future;

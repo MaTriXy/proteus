@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.flipkart.android.proteus.toolbox;
+package com.flipkart.android.proteusproto.toolbox;
 
 import java.util.regex.Pattern;
 

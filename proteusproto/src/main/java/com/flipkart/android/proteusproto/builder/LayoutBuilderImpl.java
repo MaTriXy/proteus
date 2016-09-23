@@ -1,7 +1,9 @@
-package com.flipkart.android.proteus.builder;
+package com.flipkart.android.proteusproto.builder;
 
 import android.view.ViewGroup;
 
+import com.flipkart.android.proteus.builder.LayoutBuilder;
+import com.flipkart.android.proteus.builder.LayoutBuilderCallback;
 import com.flipkart.android.proteus.parser.LayoutHandler;
 import com.flipkart.android.proteus.providers.AttributeKeyValue;
 import com.flipkart.android.proteus.providers.Data;
