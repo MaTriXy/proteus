@@ -58,16 +58,6 @@ public interface LayoutBuilder {
     LayoutHandler getHandler(String type);
 
     /**
-     * This method is used to process the attributes from the layout and set them on the {@link View}
-     * that is being built.
-     *
-     * @param handler
-     * @param view    The view to handle the attribute on.
-     * @return true if the attribute is processed false otherwise.
-     */
-    boolean handleAttribute(LayoutHandler handler, ProteusView view, AttributeKeyValue attributeKeyValue);
-
-    /**
      * This methods builds a {@link ProteusView} from a layout {@link Layout} and data {@link Data}.
      *
      * @param parent The intended parent view for the {@link View} that will be built.

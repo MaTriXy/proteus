@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+option java_package = "com.flipkart.android.proteusproto.models";
+option optimize_for = LITE_RUNTIME;
+
+message ProteusLayout {
+    AnyViewGroup viewGroup = 1;
+}
+
+message LayoutParams {
+    int32 layoutWidth = 1;
+    int32 layoutHeight = 2;
+}
+
+message View {
+    LayoutParams layoutParams = 1;
+    int32 backgroundColor = 2;
+}
+
+message ViewGroup {
+    View view = 1;
+    repeated AnyViewOrViewGroup chidView = 3;
+}
+
+message LinearLayout {
+    ViewGroup viewGroup = 1;
+    int32 orientation = 2;
+}
+
+message TextView {
+    View view = 1;
+    string text = 2;
+    int32 textColor = 3;
+    int32 textSize = 4;
+}
+
+message AnyViewGroup {
+    oneof viewGroupType {
+        LinearLayout linearLayout = 1;
+    }
+}
+
+message AnyViewOrViewGroup {
+    oneof viewOrViewGroupType {
+        TextView textView = 1;
+        LinearLayout linearLayout = 2;
+    }
+}
