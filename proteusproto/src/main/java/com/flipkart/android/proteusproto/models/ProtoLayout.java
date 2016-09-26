@@ -2028,6 +2028,333 @@ public final class ProtoLayout {
     }
   }
 
+  public interface FrameLayoutOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:FrameLayout)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>optional .ViewGroup viewGroup = 1;</code>
+     */
+    boolean hasViewGroup();
+    /**
+     * <code>optional .ViewGroup viewGroup = 1;</code>
+     */
+    com.flipkart.android.proteusproto.models.ProtoLayout.ViewGroup getViewGroup();
+  }
+  /**
+   * Protobuf type {@code FrameLayout}
+   */
+  public  static final class FrameLayout extends
+      com.google.protobuf.GeneratedMessageLite<
+          FrameLayout, FrameLayout.Builder> implements
+      // @@protoc_insertion_point(message_implements:FrameLayout)
+      FrameLayoutOrBuilder {
+    private FrameLayout() {
+    }
+    public static final int VIEWGROUP_FIELD_NUMBER = 1;
+    private com.flipkart.android.proteusproto.models.ProtoLayout.ViewGroup viewGroup_;
+    /**
+     * <code>optional .ViewGroup viewGroup = 1;</code>
+     */
+    public boolean hasViewGroup() {
+      return viewGroup_ != null;
+    }
+    /**
+     * <code>optional .ViewGroup viewGroup = 1;</code>
+     */
+    public com.flipkart.android.proteusproto.models.ProtoLayout.ViewGroup getViewGroup() {
+      return viewGroup_ == null ? com.flipkart.android.proteusproto.models.ProtoLayout.ViewGroup.getDefaultInstance() : viewGroup_;
+    }
+    /**
+     * <code>optional .ViewGroup viewGroup = 1;</code>
+     */
+    private void setViewGroup(com.flipkart.android.proteusproto.models.ProtoLayout.ViewGroup value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      viewGroup_ = value;
+      
+      }
+    /**
+     * <code>optional .ViewGroup viewGroup = 1;</code>
+     */
+    private void setViewGroup(
+        com.flipkart.android.proteusproto.models.ProtoLayout.ViewGroup.Builder builderForValue) {
+      viewGroup_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .ViewGroup viewGroup = 1;</code>
+     */
+    private void mergeViewGroup(com.flipkart.android.proteusproto.models.ProtoLayout.ViewGroup value) {
+      if (viewGroup_ != null &&
+          viewGroup_ != com.flipkart.android.proteusproto.models.ProtoLayout.ViewGroup.getDefaultInstance()) {
+        viewGroup_ =
+          com.flipkart.android.proteusproto.models.ProtoLayout.ViewGroup.newBuilder(viewGroup_).mergeFrom(value).buildPartial();
+      } else {
+        viewGroup_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .ViewGroup viewGroup = 1;</code>
+     */
+    private void clearViewGroup() {  viewGroup_ = null;
+      
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (viewGroup_ != null) {
+        output.writeMessage(1, getViewGroup());
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (viewGroup_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getViewGroup());
+      }
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code FrameLayout}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout, Builder> implements
+        // @@protoc_insertion_point(builder_implements:FrameLayout)
+        com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayoutOrBuilder {
+      // Construct using com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>optional .ViewGroup viewGroup = 1;</code>
+       */
+      public boolean hasViewGroup() {
+        return instance.hasViewGroup();
+      }
+      /**
+       * <code>optional .ViewGroup viewGroup = 1;</code>
+       */
+      public com.flipkart.android.proteusproto.models.ProtoLayout.ViewGroup getViewGroup() {
+        return instance.getViewGroup();
+      }
+      /**
+       * <code>optional .ViewGroup viewGroup = 1;</code>
+       */
+      public Builder setViewGroup(com.flipkart.android.proteusproto.models.ProtoLayout.ViewGroup value) {
+        copyOnWrite();
+        instance.setViewGroup(value);
+        return this;
+        }
+      /**
+       * <code>optional .ViewGroup viewGroup = 1;</code>
+       */
+      public Builder setViewGroup(
+          com.flipkart.android.proteusproto.models.ProtoLayout.ViewGroup.Builder builderForValue) {
+        copyOnWrite();
+        instance.setViewGroup(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .ViewGroup viewGroup = 1;</code>
+       */
+      public Builder mergeViewGroup(com.flipkart.android.proteusproto.models.ProtoLayout.ViewGroup value) {
+        copyOnWrite();
+        instance.mergeViewGroup(value);
+        return this;
+      }
+      /**
+       * <code>optional .ViewGroup viewGroup = 1;</code>
+       */
+      public Builder clearViewGroup() {  copyOnWrite();
+        instance.clearViewGroup();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:FrameLayout)
+    }
+    protected final Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout other = (com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout) arg1;
+          viewGroup_ = visitor.visitMessage(viewGroup_, other.viewGroup_);
+          if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+                case 10: {
+                  com.flipkart.android.proteusproto.models.ProtoLayout.ViewGroup.Builder subBuilder = null;
+                  if (viewGroup_ != null) {
+                    subBuilder = viewGroup_.toBuilder();
+                  }
+                  viewGroup_ = input.readMessage(com.flipkart.android.proteusproto.models.ProtoLayout.ViewGroup.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(viewGroup_);
+                    viewGroup_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:FrameLayout)
+    private static final com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new FrameLayout();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<FrameLayout> PARSER;
+
+    public static com.google.protobuf.Parser<FrameLayout> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
   public interface TextViewOrBuilder extends
       // @@protoc_insertion_point(interface_extends:TextView)
       com.google.protobuf.MessageLiteOrBuilder {
@@ -2597,6 +2924,575 @@ public final class ProtoLayout {
     }
   }
 
+  public interface ButtonOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Button)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>optional .View view = 1;</code>
+     */
+    boolean hasView();
+    /**
+     * <code>optional .View view = 1;</code>
+     */
+    com.flipkart.android.proteusproto.models.ProtoLayout.View getView();
+
+    /**
+     * <code>optional string text = 2;</code>
+     */
+    java.lang.String getText();
+    /**
+     * <code>optional string text = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getTextBytes();
+
+    /**
+     * <code>optional int32 textColor = 3;</code>
+     */
+    int getTextColor();
+
+    /**
+     * <code>optional int32 textSize = 4;</code>
+     */
+    int getTextSize();
+  }
+  /**
+   * Protobuf type {@code Button}
+   */
+  public  static final class Button extends
+      com.google.protobuf.GeneratedMessageLite<
+          Button, Button.Builder> implements
+      // @@protoc_insertion_point(message_implements:Button)
+      ButtonOrBuilder {
+    private Button() {
+      text_ = "";
+    }
+    public static final int VIEW_FIELD_NUMBER = 1;
+    private com.flipkart.android.proteusproto.models.ProtoLayout.View view_;
+    /**
+     * <code>optional .View view = 1;</code>
+     */
+    public boolean hasView() {
+      return view_ != null;
+    }
+    /**
+     * <code>optional .View view = 1;</code>
+     */
+    public com.flipkart.android.proteusproto.models.ProtoLayout.View getView() {
+      return view_ == null ? com.flipkart.android.proteusproto.models.ProtoLayout.View.getDefaultInstance() : view_;
+    }
+    /**
+     * <code>optional .View view = 1;</code>
+     */
+    private void setView(com.flipkart.android.proteusproto.models.ProtoLayout.View value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      view_ = value;
+      
+      }
+    /**
+     * <code>optional .View view = 1;</code>
+     */
+    private void setView(
+        com.flipkart.android.proteusproto.models.ProtoLayout.View.Builder builderForValue) {
+      view_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .View view = 1;</code>
+     */
+    private void mergeView(com.flipkart.android.proteusproto.models.ProtoLayout.View value) {
+      if (view_ != null &&
+          view_ != com.flipkart.android.proteusproto.models.ProtoLayout.View.getDefaultInstance()) {
+        view_ =
+          com.flipkart.android.proteusproto.models.ProtoLayout.View.newBuilder(view_).mergeFrom(value).buildPartial();
+      } else {
+        view_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .View view = 1;</code>
+     */
+    private void clearView() {  view_ = null;
+      
+    }
+
+    public static final int TEXT_FIELD_NUMBER = 2;
+    private java.lang.String text_;
+    /**
+     * <code>optional string text = 2;</code>
+     */
+    public java.lang.String getText() {
+      return text_;
+    }
+    /**
+     * <code>optional string text = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTextBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(text_);
+    }
+    /**
+     * <code>optional string text = 2;</code>
+     */
+    private void setText(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      text_ = value;
+    }
+    /**
+     * <code>optional string text = 2;</code>
+     */
+    private void clearText() {
+      
+      text_ = getDefaultInstance().getText();
+    }
+    /**
+     * <code>optional string text = 2;</code>
+     */
+    private void setTextBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      text_ = value.toStringUtf8();
+    }
+
+    public static final int TEXTCOLOR_FIELD_NUMBER = 3;
+    private int textColor_;
+    /**
+     * <code>optional int32 textColor = 3;</code>
+     */
+    public int getTextColor() {
+      return textColor_;
+    }
+    /**
+     * <code>optional int32 textColor = 3;</code>
+     */
+    private void setTextColor(int value) {
+      
+      textColor_ = value;
+    }
+    /**
+     * <code>optional int32 textColor = 3;</code>
+     */
+    private void clearTextColor() {
+      
+      textColor_ = 0;
+    }
+
+    public static final int TEXTSIZE_FIELD_NUMBER = 4;
+    private int textSize_;
+    /**
+     * <code>optional int32 textSize = 4;</code>
+     */
+    public int getTextSize() {
+      return textSize_;
+    }
+    /**
+     * <code>optional int32 textSize = 4;</code>
+     */
+    private void setTextSize(int value) {
+      
+      textSize_ = value;
+    }
+    /**
+     * <code>optional int32 textSize = 4;</code>
+     */
+    private void clearTextSize() {
+      
+      textSize_ = 0;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (view_ != null) {
+        output.writeMessage(1, getView());
+      }
+      if (!text_.isEmpty()) {
+        output.writeString(2, getText());
+      }
+      if (textColor_ != 0) {
+        output.writeInt32(3, textColor_);
+      }
+      if (textSize_ != 0) {
+        output.writeInt32(4, textSize_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (view_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getView());
+      }
+      if (!text_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(2, getText());
+      }
+      if (textColor_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, textColor_);
+      }
+      if (textSize_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, textSize_);
+      }
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static com.flipkart.android.proteusproto.models.ProtoLayout.Button parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static com.flipkart.android.proteusproto.models.ProtoLayout.Button parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static com.flipkart.android.proteusproto.models.ProtoLayout.Button parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static com.flipkart.android.proteusproto.models.ProtoLayout.Button parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static com.flipkart.android.proteusproto.models.ProtoLayout.Button parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static com.flipkart.android.proteusproto.models.ProtoLayout.Button parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static com.flipkart.android.proteusproto.models.ProtoLayout.Button parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static com.flipkart.android.proteusproto.models.ProtoLayout.Button parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static com.flipkart.android.proteusproto.models.ProtoLayout.Button parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static com.flipkart.android.proteusproto.models.ProtoLayout.Button parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.flipkart.android.proteusproto.models.ProtoLayout.Button prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code Button}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          com.flipkart.android.proteusproto.models.ProtoLayout.Button, Builder> implements
+        // @@protoc_insertion_point(builder_implements:Button)
+        com.flipkart.android.proteusproto.models.ProtoLayout.ButtonOrBuilder {
+      // Construct using com.flipkart.android.proteusproto.models.ProtoLayout.Button.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>optional .View view = 1;</code>
+       */
+      public boolean hasView() {
+        return instance.hasView();
+      }
+      /**
+       * <code>optional .View view = 1;</code>
+       */
+      public com.flipkart.android.proteusproto.models.ProtoLayout.View getView() {
+        return instance.getView();
+      }
+      /**
+       * <code>optional .View view = 1;</code>
+       */
+      public Builder setView(com.flipkart.android.proteusproto.models.ProtoLayout.View value) {
+        copyOnWrite();
+        instance.setView(value);
+        return this;
+        }
+      /**
+       * <code>optional .View view = 1;</code>
+       */
+      public Builder setView(
+          com.flipkart.android.proteusproto.models.ProtoLayout.View.Builder builderForValue) {
+        copyOnWrite();
+        instance.setView(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .View view = 1;</code>
+       */
+      public Builder mergeView(com.flipkart.android.proteusproto.models.ProtoLayout.View value) {
+        copyOnWrite();
+        instance.mergeView(value);
+        return this;
+      }
+      /**
+       * <code>optional .View view = 1;</code>
+       */
+      public Builder clearView() {  copyOnWrite();
+        instance.clearView();
+        return this;
+      }
+
+      /**
+       * <code>optional string text = 2;</code>
+       */
+      public java.lang.String getText() {
+        return instance.getText();
+      }
+      /**
+       * <code>optional string text = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTextBytes() {
+        return instance.getTextBytes();
+      }
+      /**
+       * <code>optional string text = 2;</code>
+       */
+      public Builder setText(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setText(value);
+        return this;
+      }
+      /**
+       * <code>optional string text = 2;</code>
+       */
+      public Builder clearText() {
+        copyOnWrite();
+        instance.clearText();
+        return this;
+      }
+      /**
+       * <code>optional string text = 2;</code>
+       */
+      public Builder setTextBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setTextBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional int32 textColor = 3;</code>
+       */
+      public int getTextColor() {
+        return instance.getTextColor();
+      }
+      /**
+       * <code>optional int32 textColor = 3;</code>
+       */
+      public Builder setTextColor(int value) {
+        copyOnWrite();
+        instance.setTextColor(value);
+        return this;
+      }
+      /**
+       * <code>optional int32 textColor = 3;</code>
+       */
+      public Builder clearTextColor() {
+        copyOnWrite();
+        instance.clearTextColor();
+        return this;
+      }
+
+      /**
+       * <code>optional int32 textSize = 4;</code>
+       */
+      public int getTextSize() {
+        return instance.getTextSize();
+      }
+      /**
+       * <code>optional int32 textSize = 4;</code>
+       */
+      public Builder setTextSize(int value) {
+        copyOnWrite();
+        instance.setTextSize(value);
+        return this;
+      }
+      /**
+       * <code>optional int32 textSize = 4;</code>
+       */
+      public Builder clearTextSize() {
+        copyOnWrite();
+        instance.clearTextSize();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:Button)
+    }
+    protected final Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new com.flipkart.android.proteusproto.models.ProtoLayout.Button();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          com.flipkart.android.proteusproto.models.ProtoLayout.Button other = (com.flipkart.android.proteusproto.models.ProtoLayout.Button) arg1;
+          view_ = visitor.visitMessage(view_, other.view_);
+          text_ = visitor.visitString(!text_.isEmpty(), text_,
+              !other.text_.isEmpty(), other.text_);
+          textColor_ = visitor.visitInt(textColor_ != 0, textColor_,
+              other.textColor_ != 0, other.textColor_);
+          textSize_ = visitor.visitInt(textSize_ != 0, textSize_,
+              other.textSize_ != 0, other.textSize_);
+          if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+                case 10: {
+                  com.flipkart.android.proteusproto.models.ProtoLayout.View.Builder subBuilder = null;
+                  if (view_ != null) {
+                    subBuilder = view_.toBuilder();
+                  }
+                  view_ = input.readMessage(com.flipkart.android.proteusproto.models.ProtoLayout.View.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(view_);
+                    view_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 18: {
+                  String s = input.readStringRequireUtf8();
+
+                  text_ = s;
+                  break;
+                }
+                case 24: {
+
+                  textColor_ = input.readInt32();
+                  break;
+                }
+                case 32: {
+
+                  textSize_ = input.readInt32();
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (com.flipkart.android.proteusproto.models.ProtoLayout.Button.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:Button)
+    private static final com.flipkart.android.proteusproto.models.ProtoLayout.Button DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Button();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static com.flipkart.android.proteusproto.models.ProtoLayout.Button getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<Button> PARSER;
+
+    public static com.google.protobuf.Parser<Button> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
   public interface AnyViewGroupOrBuilder extends
       // @@protoc_insertion_point(interface_extends:AnyViewGroup)
       com.google.protobuf.MessageLiteOrBuilder {
@@ -2605,6 +3501,11 @@ public final class ProtoLayout {
      * <code>optional .LinearLayout linearLayout = 1;</code>
      */
     com.flipkart.android.proteusproto.models.ProtoLayout.LinearLayout getLinearLayout();
+
+    /**
+     * <code>optional .FrameLayout frameLayout = 2;</code>
+     */
+    com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout getFrameLayout();
 
     public com.flipkart.android.proteusproto.models.ProtoLayout.AnyViewGroup.ViewGroupTypeCase getViewGroupTypeCase();
   }
@@ -2623,6 +3524,7 @@ public final class ProtoLayout {
     public enum ViewGroupTypeCase
         implements com.google.protobuf.Internal.EnumLite {
       LINEARLAYOUT(1),
+      FRAMELAYOUT(2),
       VIEWGROUPTYPE_NOT_SET(0);
       private final int value;
       private ViewGroupTypeCase(int value) {
@@ -2639,6 +3541,7 @@ public final class ProtoLayout {
       public static ViewGroupTypeCase forNumber(int value) {
         switch (value) {
           case 1: return LINEARLAYOUT;
+          case 2: return FRAMELAYOUT;
           case 0: return VIEWGROUPTYPE_NOT_SET;
           default: return null;
         }
@@ -2710,10 +3613,64 @@ public final class ProtoLayout {
       }
     }
 
+    public static final int FRAMELAYOUT_FIELD_NUMBER = 2;
+    /**
+     * <code>optional .FrameLayout frameLayout = 2;</code>
+     */
+    public com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout getFrameLayout() {
+      if (viewGroupTypeCase_ == 2) {
+         return (com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout) viewGroupType_;
+      }
+      return com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout.getDefaultInstance();
+    }
+    /**
+     * <code>optional .FrameLayout frameLayout = 2;</code>
+     */
+    private void setFrameLayout(com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      viewGroupType_ = value;
+      viewGroupTypeCase_ = 2;
+    }
+    /**
+     * <code>optional .FrameLayout frameLayout = 2;</code>
+     */
+    private void setFrameLayout(
+        com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout.Builder builderForValue) {
+      viewGroupType_ = builderForValue.build();
+      viewGroupTypeCase_ = 2;
+    }
+    /**
+     * <code>optional .FrameLayout frameLayout = 2;</code>
+     */
+    private void mergeFrameLayout(com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout value) {
+      if (viewGroupTypeCase_ == 2 &&
+          viewGroupType_ != com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout.getDefaultInstance()) {
+        viewGroupType_ = com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout.newBuilder((com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout) viewGroupType_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        viewGroupType_ = value;
+      }
+      viewGroupTypeCase_ = 2;
+    }
+    /**
+     * <code>optional .FrameLayout frameLayout = 2;</code>
+     */
+    private void clearFrameLayout() {
+      if (viewGroupTypeCase_ == 2) {
+        viewGroupTypeCase_ = 0;
+        viewGroupType_ = null;
+      }
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (viewGroupTypeCase_ == 1) {
         output.writeMessage(1, (com.flipkart.android.proteusproto.models.ProtoLayout.LinearLayout) viewGroupType_);
+      }
+      if (viewGroupTypeCase_ == 2) {
+        output.writeMessage(2, (com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout) viewGroupType_);
       }
     }
 
@@ -2725,6 +3682,10 @@ public final class ProtoLayout {
       if (viewGroupTypeCase_ == 1) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, (com.flipkart.android.proteusproto.models.ProtoLayout.LinearLayout) viewGroupType_);
+      }
+      if (viewGroupTypeCase_ == 2) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, (com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout) viewGroupType_);
       }
       memoizedSerializedSize = size;
       return size;
@@ -2863,6 +3824,46 @@ public final class ProtoLayout {
         return this;
       }
 
+      /**
+       * <code>optional .FrameLayout frameLayout = 2;</code>
+       */
+      public com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout getFrameLayout() {
+        return instance.getFrameLayout();
+      }
+      /**
+       * <code>optional .FrameLayout frameLayout = 2;</code>
+       */
+      public Builder setFrameLayout(com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout value) {
+        copyOnWrite();
+        instance.setFrameLayout(value);
+        return this;
+      }
+      /**
+       * <code>optional .FrameLayout frameLayout = 2;</code>
+       */
+      public Builder setFrameLayout(
+          com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout.Builder builderForValue) {
+        copyOnWrite();
+        instance.setFrameLayout(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .FrameLayout frameLayout = 2;</code>
+       */
+      public Builder mergeFrameLayout(com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout value) {
+        copyOnWrite();
+        instance.mergeFrameLayout(value);
+        return this;
+      }
+      /**
+       * <code>optional .FrameLayout frameLayout = 2;</code>
+       */
+      public Builder clearFrameLayout() {
+        copyOnWrite();
+        instance.clearFrameLayout();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:AnyViewGroup)
     }
     protected final Object dynamicMethod(
@@ -2888,6 +3889,13 @@ public final class ProtoLayout {
             case LINEARLAYOUT: {
               viewGroupType_ = visitor.visitOneofMessage(
                   viewGroupTypeCase_ == 1,
+                  viewGroupType_,
+                  other.viewGroupType_);
+              break;
+            }
+            case FRAMELAYOUT: {
+              viewGroupType_ = visitor.visitOneofMessage(
+                  viewGroupTypeCase_ == 2,
                   viewGroupType_,
                   other.viewGroupType_);
               break;
@@ -2936,6 +3944,20 @@ public final class ProtoLayout {
                     viewGroupType_ = subBuilder.buildPartial();
                   }
                   viewGroupTypeCase_ = 1;
+                  break;
+                }
+                case 18: {
+                  com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout.Builder subBuilder = null;
+                  if (viewGroupTypeCase_ == 2) {
+                    subBuilder = ((com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout) viewGroupType_).toBuilder();
+                  }
+                  viewGroupType_ =
+                       input.readMessage(com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout) viewGroupType_);
+                    viewGroupType_ = subBuilder.buildPartial();
+                  }
+                  viewGroupTypeCase_ = 2;
                   break;
                 }
               }
@@ -2998,6 +4020,16 @@ public final class ProtoLayout {
      */
     com.flipkart.android.proteusproto.models.ProtoLayout.LinearLayout getLinearLayout();
 
+    /**
+     * <code>optional .FrameLayout frameLayout = 3;</code>
+     */
+    com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout getFrameLayout();
+
+    /**
+     * <code>optional .Button button = 4;</code>
+     */
+    com.flipkart.android.proteusproto.models.ProtoLayout.Button getButton();
+
     public com.flipkart.android.proteusproto.models.ProtoLayout.AnyViewOrViewGroup.ViewOrViewGroupTypeCase getViewOrViewGroupTypeCase();
   }
   /**
@@ -3016,6 +4048,8 @@ public final class ProtoLayout {
         implements com.google.protobuf.Internal.EnumLite {
       TEXTVIEW(1),
       LINEARLAYOUT(2),
+      FRAMELAYOUT(3),
+      BUTTON(4),
       VIEWORVIEWGROUPTYPE_NOT_SET(0);
       private final int value;
       private ViewOrViewGroupTypeCase(int value) {
@@ -3033,6 +4067,8 @@ public final class ProtoLayout {
         switch (value) {
           case 1: return TEXTVIEW;
           case 2: return LINEARLAYOUT;
+          case 3: return FRAMELAYOUT;
+          case 4: return BUTTON;
           case 0: return VIEWORVIEWGROUPTYPE_NOT_SET;
           default: return null;
         }
@@ -3155,6 +4191,108 @@ public final class ProtoLayout {
       }
     }
 
+    public static final int FRAMELAYOUT_FIELD_NUMBER = 3;
+    /**
+     * <code>optional .FrameLayout frameLayout = 3;</code>
+     */
+    public com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout getFrameLayout() {
+      if (viewOrViewGroupTypeCase_ == 3) {
+         return (com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout) viewOrViewGroupType_;
+      }
+      return com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout.getDefaultInstance();
+    }
+    /**
+     * <code>optional .FrameLayout frameLayout = 3;</code>
+     */
+    private void setFrameLayout(com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      viewOrViewGroupType_ = value;
+      viewOrViewGroupTypeCase_ = 3;
+    }
+    /**
+     * <code>optional .FrameLayout frameLayout = 3;</code>
+     */
+    private void setFrameLayout(
+        com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout.Builder builderForValue) {
+      viewOrViewGroupType_ = builderForValue.build();
+      viewOrViewGroupTypeCase_ = 3;
+    }
+    /**
+     * <code>optional .FrameLayout frameLayout = 3;</code>
+     */
+    private void mergeFrameLayout(com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout value) {
+      if (viewOrViewGroupTypeCase_ == 3 &&
+          viewOrViewGroupType_ != com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout.getDefaultInstance()) {
+        viewOrViewGroupType_ = com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout.newBuilder((com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout) viewOrViewGroupType_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        viewOrViewGroupType_ = value;
+      }
+      viewOrViewGroupTypeCase_ = 3;
+    }
+    /**
+     * <code>optional .FrameLayout frameLayout = 3;</code>
+     */
+    private void clearFrameLayout() {
+      if (viewOrViewGroupTypeCase_ == 3) {
+        viewOrViewGroupTypeCase_ = 0;
+        viewOrViewGroupType_ = null;
+      }
+    }
+
+    public static final int BUTTON_FIELD_NUMBER = 4;
+    /**
+     * <code>optional .Button button = 4;</code>
+     */
+    public com.flipkart.android.proteusproto.models.ProtoLayout.Button getButton() {
+      if (viewOrViewGroupTypeCase_ == 4) {
+         return (com.flipkart.android.proteusproto.models.ProtoLayout.Button) viewOrViewGroupType_;
+      }
+      return com.flipkart.android.proteusproto.models.ProtoLayout.Button.getDefaultInstance();
+    }
+    /**
+     * <code>optional .Button button = 4;</code>
+     */
+    private void setButton(com.flipkart.android.proteusproto.models.ProtoLayout.Button value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      viewOrViewGroupType_ = value;
+      viewOrViewGroupTypeCase_ = 4;
+    }
+    /**
+     * <code>optional .Button button = 4;</code>
+     */
+    private void setButton(
+        com.flipkart.android.proteusproto.models.ProtoLayout.Button.Builder builderForValue) {
+      viewOrViewGroupType_ = builderForValue.build();
+      viewOrViewGroupTypeCase_ = 4;
+    }
+    /**
+     * <code>optional .Button button = 4;</code>
+     */
+    private void mergeButton(com.flipkart.android.proteusproto.models.ProtoLayout.Button value) {
+      if (viewOrViewGroupTypeCase_ == 4 &&
+          viewOrViewGroupType_ != com.flipkart.android.proteusproto.models.ProtoLayout.Button.getDefaultInstance()) {
+        viewOrViewGroupType_ = com.flipkart.android.proteusproto.models.ProtoLayout.Button.newBuilder((com.flipkart.android.proteusproto.models.ProtoLayout.Button) viewOrViewGroupType_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        viewOrViewGroupType_ = value;
+      }
+      viewOrViewGroupTypeCase_ = 4;
+    }
+    /**
+     * <code>optional .Button button = 4;</code>
+     */
+    private void clearButton() {
+      if (viewOrViewGroupTypeCase_ == 4) {
+        viewOrViewGroupTypeCase_ = 0;
+        viewOrViewGroupType_ = null;
+      }
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (viewOrViewGroupTypeCase_ == 1) {
@@ -3162,6 +4300,12 @@ public final class ProtoLayout {
       }
       if (viewOrViewGroupTypeCase_ == 2) {
         output.writeMessage(2, (com.flipkart.android.proteusproto.models.ProtoLayout.LinearLayout) viewOrViewGroupType_);
+      }
+      if (viewOrViewGroupTypeCase_ == 3) {
+        output.writeMessage(3, (com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout) viewOrViewGroupType_);
+      }
+      if (viewOrViewGroupTypeCase_ == 4) {
+        output.writeMessage(4, (com.flipkart.android.proteusproto.models.ProtoLayout.Button) viewOrViewGroupType_);
       }
     }
 
@@ -3177,6 +4321,14 @@ public final class ProtoLayout {
       if (viewOrViewGroupTypeCase_ == 2) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, (com.flipkart.android.proteusproto.models.ProtoLayout.LinearLayout) viewOrViewGroupType_);
+      }
+      if (viewOrViewGroupTypeCase_ == 3) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, (com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout) viewOrViewGroupType_);
+      }
+      if (viewOrViewGroupTypeCase_ == 4) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, (com.flipkart.android.proteusproto.models.ProtoLayout.Button) viewOrViewGroupType_);
       }
       memoizedSerializedSize = size;
       return size;
@@ -3355,6 +4507,86 @@ public final class ProtoLayout {
         return this;
       }
 
+      /**
+       * <code>optional .FrameLayout frameLayout = 3;</code>
+       */
+      public com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout getFrameLayout() {
+        return instance.getFrameLayout();
+      }
+      /**
+       * <code>optional .FrameLayout frameLayout = 3;</code>
+       */
+      public Builder setFrameLayout(com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout value) {
+        copyOnWrite();
+        instance.setFrameLayout(value);
+        return this;
+      }
+      /**
+       * <code>optional .FrameLayout frameLayout = 3;</code>
+       */
+      public Builder setFrameLayout(
+          com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout.Builder builderForValue) {
+        copyOnWrite();
+        instance.setFrameLayout(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .FrameLayout frameLayout = 3;</code>
+       */
+      public Builder mergeFrameLayout(com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout value) {
+        copyOnWrite();
+        instance.mergeFrameLayout(value);
+        return this;
+      }
+      /**
+       * <code>optional .FrameLayout frameLayout = 3;</code>
+       */
+      public Builder clearFrameLayout() {
+        copyOnWrite();
+        instance.clearFrameLayout();
+        return this;
+      }
+
+      /**
+       * <code>optional .Button button = 4;</code>
+       */
+      public com.flipkart.android.proteusproto.models.ProtoLayout.Button getButton() {
+        return instance.getButton();
+      }
+      /**
+       * <code>optional .Button button = 4;</code>
+       */
+      public Builder setButton(com.flipkart.android.proteusproto.models.ProtoLayout.Button value) {
+        copyOnWrite();
+        instance.setButton(value);
+        return this;
+      }
+      /**
+       * <code>optional .Button button = 4;</code>
+       */
+      public Builder setButton(
+          com.flipkart.android.proteusproto.models.ProtoLayout.Button.Builder builderForValue) {
+        copyOnWrite();
+        instance.setButton(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .Button button = 4;</code>
+       */
+      public Builder mergeButton(com.flipkart.android.proteusproto.models.ProtoLayout.Button value) {
+        copyOnWrite();
+        instance.mergeButton(value);
+        return this;
+      }
+      /**
+       * <code>optional .Button button = 4;</code>
+       */
+      public Builder clearButton() {
+        copyOnWrite();
+        instance.clearButton();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:AnyViewOrViewGroup)
     }
     protected final Object dynamicMethod(
@@ -3387,6 +4619,20 @@ public final class ProtoLayout {
             case LINEARLAYOUT: {
               viewOrViewGroupType_ = visitor.visitOneofMessage(
                   viewOrViewGroupTypeCase_ == 2,
+                  viewOrViewGroupType_,
+                  other.viewOrViewGroupType_);
+              break;
+            }
+            case FRAMELAYOUT: {
+              viewOrViewGroupType_ = visitor.visitOneofMessage(
+                  viewOrViewGroupTypeCase_ == 3,
+                  viewOrViewGroupType_,
+                  other.viewOrViewGroupType_);
+              break;
+            }
+            case BUTTON: {
+              viewOrViewGroupType_ = visitor.visitOneofMessage(
+                  viewOrViewGroupTypeCase_ == 4,
                   viewOrViewGroupType_,
                   other.viewOrViewGroupType_);
               break;
@@ -3449,6 +4695,34 @@ public final class ProtoLayout {
                     viewOrViewGroupType_ = subBuilder.buildPartial();
                   }
                   viewOrViewGroupTypeCase_ = 2;
+                  break;
+                }
+                case 26: {
+                  com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout.Builder subBuilder = null;
+                  if (viewOrViewGroupTypeCase_ == 3) {
+                    subBuilder = ((com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout) viewOrViewGroupType_).toBuilder();
+                  }
+                  viewOrViewGroupType_ =
+                       input.readMessage(com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((com.flipkart.android.proteusproto.models.ProtoLayout.FrameLayout) viewOrViewGroupType_);
+                    viewOrViewGroupType_ = subBuilder.buildPartial();
+                  }
+                  viewOrViewGroupTypeCase_ = 3;
+                  break;
+                }
+                case 34: {
+                  com.flipkart.android.proteusproto.models.ProtoLayout.Button.Builder subBuilder = null;
+                  if (viewOrViewGroupTypeCase_ == 4) {
+                    subBuilder = ((com.flipkart.android.proteusproto.models.ProtoLayout.Button) viewOrViewGroupType_).toBuilder();
+                  }
+                  viewOrViewGroupType_ =
+                       input.readMessage(com.flipkart.android.proteusproto.models.ProtoLayout.Button.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((com.flipkart.android.proteusproto.models.ProtoLayout.Button) viewOrViewGroupType_);
+                    viewOrViewGroupType_ = subBuilder.buildPartial();
+                  }
+                  viewOrViewGroupTypeCase_ = 4;
                   break;
                 }
               }

@@ -18,13 +18,53 @@ package com.flipkart.android.proteus.demo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
+import com.flipkart.android.proteusproto.models.ProtoLayout;
+import com.google.protobuf.InvalidProtocolBufferException;
+
+import hugo.weaving.DebugLog;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button buttonTestProto = (Button) findViewById(R.id.test_proto);
+
+        buttonTestProto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ProtoLayout.ProteusLayout proteusLayout = generateProteusLayout();
+                byte[] bytes = getBytes(proteusLayout);
+                ProtoLayout.ProteusLayout proteusLayoutFromBytes = null;
+                try {
+                    proteusLayoutFromBytes = getProteusLayout(bytes);
+                } catch (InvalidProtocolBufferException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    @DebugLog
+    private ProtoLayout.ProteusLayout getProteusLayout(byte[] bytes) throws InvalidProtocolBufferException {
+        return ProtoLayout.ProteusLayout.parseFrom(bytes);
+    }
+
+    @DebugLog
+    private byte[] getBytes(ProtoLayout.ProteusLayout proteusLayout) {
+        return proteusLayout.toByteArray();
+    }
+
+    private ProtoLayout.ProteusLayout generateProteusLayout() {
+        ProtoLayout.LayoutParams frameLayoutParams = ProtoLayout.LayoutParams.getDefaultInstance().newBuilderForType().setLayoutHeight(200).setLayoutWidth(200).build();
+        ProtoLayout.View frameLayoutView = ProtoLayout.View.getDefaultInstance().newBuilderForType().setLayoutParams(frameLayoutParams).setBackgroundColor(0xFFFF0000).build();
+        ProtoLayout.ViewGroup frameLayoutViewGroup = ProtoLayout.ViewGroup.getDefaultInstance().newBuilderForType().setView(frameLayoutView).build();
+        ProtoLayout.FrameLayout frameLayout = ProtoLayout.FrameLayout.getDefaultInstance().newBuilderForType().setViewGroup(frameLayoutViewGroup).build();
+        ProtoLayout.AnyViewGroup viewGroup = ProtoLayout.AnyViewGroup.getDefaultInstance().newBuilderForType().setFrameLayout(frameLayout).build();
+        return ProtoLayout.ProteusLayout.getDefaultInstance().newBuilderForType().setViewGroup(viewGroup).build();
     }
 }

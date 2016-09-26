@@ -27,7 +27,18 @@ message LinearLayout {
     int32 orientation = 2;
 }
 
+message FrameLayout {
+    ViewGroup viewGroup = 1;
+}
+
 message TextView {
+    View view = 1;
+    string text = 2;
+    int32 textColor = 3;
+    int32 textSize = 4;
+}
+
+message Button {
     View view = 1;
     string text = 2;
     int32 textColor = 3;
@@ -37,6 +48,7 @@ message TextView {
 message AnyViewGroup {
     oneof viewGroupType {
         LinearLayout linearLayout = 1;
+        FrameLayout frameLayout = 2;
     }
 }
 
@@ -44,5 +56,7 @@ message AnyViewOrViewGroup {
     oneof viewOrViewGroupType {
         TextView textView = 1;
         LinearLayout linearLayout = 2;
+        FrameLayout frameLayout = 3;
+        Button button = 4;
     }
 }

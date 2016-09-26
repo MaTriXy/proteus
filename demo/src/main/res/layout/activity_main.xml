@@ -38,6 +38,15 @@
         android:layout_margin="8dp"
         tools:ignore="HardcodedText" />
 
+    <Button
+        android:id="@+id/test_proto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Proto"
+        android:padding="8dp"
+        android:layout_margin="8dp"
+        tools:ignore="HardcodedText" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

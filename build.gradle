@@ -19,14 +19,18 @@
 buildscript {
     repositories {
         mavenCentral()
+        mavenLocal()
+        maven { url 'http://artifactory.nm.flipkart.com:8081/artifactory/' + 'libs-snapshot-local' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.0'
+        classpath 'com.jakewharton.hugo:hugo-plugin:1.2.2-SNAPSHOT'
     }
 }
 
 allprojects {
     repositories {
         mavenCentral()
+        mavenLocal()
     }
 }
