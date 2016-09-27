@@ -61,7 +61,7 @@ abstract class LayoutHandlerImpl<V extends View> implements LayoutHandler<V> {
         return false;
     }
 
-    private ViewGroup.LayoutParams generateDefaultLayoutParams(ViewGroup parent) throws IOException, XmlPullParserException {
+    ViewGroup.LayoutParams generateDefaultLayoutParams(ViewGroup parent) throws IOException, XmlPullParserException {
 
         /**
          * This whole method is a hack! To generate layout params, since no other way exists.
@@ -82,5 +82,5 @@ abstract class LayoutHandlerImpl<V extends View> implements LayoutHandler<V> {
         return parent.generateLayoutParams(sParser);
     }
 
-    abstract boolean handleViewAttributes(View view, ProteusLayout.View viewAttributes);
+    abstract boolean handleViewAttributes(V view, ProteusLayout.View viewAttributes);
 }

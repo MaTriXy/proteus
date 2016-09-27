@@ -58,6 +58,8 @@ public class LayoutBuilderImpl implements LayoutBuilder {
         assert handler != null;
         view = handler.createView(parent, layout, data, styles, index);
 
+        handler.onAfterCreateView((View) view, parent, layout, data, styles, index);
+
         //TODO add implementation for handler.handleAttributes
         handler.handleAttributes((View) view, layout.getAnyViewOrViewGroup());
 

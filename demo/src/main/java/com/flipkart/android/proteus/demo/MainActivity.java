@@ -45,44 +45,47 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 ProteusLayout.AnyViewOrViewGroup proteusLayout = generateProteusLayout();
                 byte[] bytes = getBytes(proteusLayout);
-                ProteusLayout.AnyViewOrViewGroup proteusLayoutFromBytes = null;
-                try {
-                    proteusLayoutFromBytes = getProteusLayout(bytes);
-                } catch (InvalidProtocolBufferException e) {
-                    e.printStackTrace();
-                }
-                // get the containerView
-                FrameLayout containerView = (FrameLayout) findViewById(R.id.container);
-                // get the layout from bytes and make layoutImpl
-                assert proteusLayoutFromBytes != null;
-                Layout layout = new LayoutImpl(proteusLayoutFromBytes);
-                LayoutBuilder layoutBuilder = new LayoutBuilderImpl();
-                //TODO come back and register handlers when done with implementations
-                layoutBuilder.registerHandler("VIEW", null);
-                layoutBuilder.registerHandler("VIEWGROUP", null);
-                layoutBuilder.registerHandler("FRAMELAYOUT", new FrameLayoutHandler());
-                layoutBuilder.registerHandler("LINEARLAYOUT", null);
-                layoutBuilder.registerHandler("TEXTVIEW", null);
-                layoutBuilder.registerHandler("BUTTON", null);
-                // get the proteusView from layout
-                ProteusView proteusView = layoutBuilder.build(containerView, layout, null, 0, null);
-                containerView.addView((View) proteusView);
+                makeProteusProtoLayout(bytes);
             }
         });
     }
 
     @DebugLog
+    private void makeProteusProtoLayout(byte[] bytes) {
+        ProteusLayout.AnyViewOrViewGroup proteusLayoutFromBytes = null;
+        try {
+            proteusLayoutFromBytes = getProteusLayout(bytes);
+        } catch (InvalidProtocolBufferException e) {
+            e.printStackTrace();
+        }
+        // get the containerView
+        FrameLayout containerView = (FrameLayout) findViewById(R.id.container);
+        // get the layout from bytes and make layoutImpl
+        assert proteusLayoutFromBytes != null;
+        Layout layout = new LayoutImpl(proteusLayoutFromBytes);
+        LayoutBuilder layoutBuilder = new LayoutBuilderImpl();
+        //TODO come back and register handlers when done with implementations
+        layoutBuilder.registerHandler("VIEW", null);
+        layoutBuilder.registerHandler("VIEWGROUP", null);
+        layoutBuilder.registerHandler("FRAMELAYOUT", new FrameLayoutHandler());
+        layoutBuilder.registerHandler("LINEARLAYOUT", null);
+        layoutBuilder.registerHandler("TEXTVIEW", null);
+        layoutBuilder.registerHandler("BUTTON", null);
+        // get the proteusView from layout
+        ProteusView proteusView = layoutBuilder.build(containerView, layout, null, 0, null);
+        containerView.addView((View) proteusView);
+    }
+
     private ProteusLayout.AnyViewOrViewGroup getProteusLayout(byte[] bytes) throws InvalidProtocolBufferException {
         return ProteusLayout.AnyViewOrViewGroup.parseFrom(bytes);
     }
 
-    @DebugLog
     private byte[] getBytes(ProteusLayout.AnyViewOrViewGroup proteusLayout) {
         return proteusLayout.toByteArray();
     }
 
     private ProteusLayout.AnyViewOrViewGroup generateProteusLayout() {
-        ProteusLayout.LayoutParams frameLayoutParams = ProteusLayout.LayoutParams.getDefaultInstance().newBuilderForType().setLayoutHeight(200).setLayoutWidth(200).build();
+        ProteusLayout.LayoutParams frameLayoutParams = ProteusLayout.LayoutParams.getDefaultInstance().newBuilderForType().setLayoutHeight(150).setLayoutWidth(150).build();
         ProteusLayout.View frameLayoutView = ProteusLayout.View.getDefaultInstance().newBuilderForType().setLayoutParams(frameLayoutParams).setBackgroundColor(0xFFFF0000).build();
         ProteusLayout.ViewGroup frameLayoutViewGroup = ProteusLayout.ViewGroup.getDefaultInstance().newBuilderForType().setView(frameLayoutView).build();
         ProteusLayout.FrameLayout frameLayout = ProteusLayout.FrameLayout.getDefaultInstance().newBuilderForType().setViewGroup(frameLayoutViewGroup).build();
