@@ -20,7 +20,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.flipkart.android.proteus.parser.LayoutHandler;
-import com.flipkart.android.proteus.providers.AttributeKeyValue;
 import com.flipkart.android.proteus.providers.Data;
 import com.flipkart.android.proteus.providers.Layout;
 import com.flipkart.android.proteus.providers.Styles;

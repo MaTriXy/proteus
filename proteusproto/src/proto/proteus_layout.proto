@@ -3,10 +3,6 @@ syntax = "proto3";
 option java_package = "com.flipkart.android.proteusproto.models";
 option optimize_for = LITE_RUNTIME;
 
-message ProteusLayout {
-    AnyViewGroup viewGroup = 1;
-}
-
 message LayoutParams {
     int32 layoutWidth = 1;
     int32 layoutHeight = 2;
@@ -19,7 +15,7 @@ message View {
 
 message ViewGroup {
     View view = 1;
-    repeated AnyViewOrViewGroup chidView = 3;
+    repeated AnyViewOrViewGroup anyViewOrViewGroup = 2;
 }
 
 message LinearLayout {
@@ -45,18 +41,13 @@ message Button {
     int32 textSize = 4;
 }
 
-message AnyViewGroup {
-    oneof viewGroupType {
-        LinearLayout linearLayout = 1;
-        FrameLayout frameLayout = 2;
-    }
-}
-
 message AnyViewOrViewGroup {
     oneof viewOrViewGroupType {
         TextView textView = 1;
         LinearLayout linearLayout = 2;
         FrameLayout frameLayout = 3;
         Button button = 4;
+        View view = 5;
+        ViewGroup viewGroup = 6;
     }
 }

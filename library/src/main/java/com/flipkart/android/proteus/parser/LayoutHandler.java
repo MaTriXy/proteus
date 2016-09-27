@@ -16,10 +16,10 @@
 
 package com.flipkart.android.proteus.parser;
 
+import android.view.View;
 import android.view.ViewGroup;
 
-import com.flipkart.android.proteus.providers.AttributeKey;
-import com.flipkart.android.proteus.providers.AttributeKeyValue;
+import com.flipkart.android.proteus.providers.AnyViewOrViewGroup;
 import com.flipkart.android.proteus.providers.Data;
 import com.flipkart.android.proteus.providers.Layout;
 import com.flipkart.android.proteus.providers.Styles;
@@ -28,19 +28,19 @@ import com.flipkart.android.proteus.view.ProteusView;
 /**
  * @author kiran.kumar
  */
-public interface LayoutHandler {
+public interface LayoutHandler<V extends View> {
 
     void onBeforeCreateView(ViewGroup parent, Layout layout, Data data, Styles styles, int index);
 
     ProteusView createView(ViewGroup parent, Layout layout, Data data, Styles styles, int index);
 
-    void onAfterCreateView(ProteusView view, ViewGroup parent, Layout layout, Data data, Styles styles, int index);
+    void onAfterCreateView(V view, ViewGroup parent, Layout layout, Data data, Styles styles, int index);
 
     void prepareAttributeHandlers();
 
-    void addHandler(AttributeKey attributeKey, AttributeProcessor handler);
+    void addHandler(String attributeKey, AttributeProcessor handler);
 
-    boolean handleAttribute(ProteusView view, AttributeKeyValue attributeKeyValue);
+    boolean handleAttributes(V view, AnyViewOrViewGroup anyViewOrViewGroup);
 
     boolean handleChildLayout(ProteusView view, Layout layout);
 

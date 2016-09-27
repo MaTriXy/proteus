@@ -8,7 +8,7 @@ import java.util.Collection;
 public interface Layout {
     String getType();
 
-    Collection<AttributeKeyValue> getAttributes();
+    AnyViewOrViewGroup getAnyViewOrViewGroup();
 
     Collection<Layout> getChildren();
 }

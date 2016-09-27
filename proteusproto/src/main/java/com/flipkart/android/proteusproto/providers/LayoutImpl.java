@@ -1,8 +1,8 @@
 package com.flipkart.android.proteusproto.providers;
 
-import com.flipkart.android.proteus.providers.AttributeKeyValue;
+import com.flipkart.android.proteus.providers.AnyViewOrViewGroup;
 import com.flipkart.android.proteus.providers.Layout;
-import com.flipkart.android.proteusproto.models.ProtoLayout;
+import com.flipkart.android.proteusproto.models.ProteusLayout;
 
 import java.util.Collection;
 
@@ -11,24 +11,24 @@ import java.util.Collection;
  */
 
 public class LayoutImpl implements Layout {
-    private ProtoLayout.ProteusLayout proteusLayout;
+    private AnyViewOrViewGroupImpl anyViewOrViewGroup;
 
-    public LayoutImpl(ProtoLayout.ProteusLayout proteusLayout) {
-        this.proteusLayout = proteusLayout;
+    public LayoutImpl(ProteusLayout.AnyViewOrViewGroup anyViewOrViewGroup) {
+        this.anyViewOrViewGroup = new AnyViewOrViewGroupImpl(anyViewOrViewGroup);
     }
 
     @Override
     public String getType() {
-        return proteusLayout.getDefaultInstanceForType().getViewGroup().getViewGroupTypeCase().name();
+        return anyViewOrViewGroup.getViewOrViewGroupType();
     }
 
     @Override
-    public Collection<AttributeKeyValue> getAttributes() {
-        return null;
+    public AnyViewOrViewGroup getAnyViewOrViewGroup() {
+        return anyViewOrViewGroup;
     }
 
     @Override
     public Collection<Layout> getChildren() {
-        return null;
+        return anyViewOrViewGroup.isViewGroup() ? anyViewOrViewGroup.getViewGroupChildren() : null;
     }
 }

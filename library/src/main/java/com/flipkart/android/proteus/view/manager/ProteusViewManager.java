@@ -22,7 +22,6 @@ import android.view.View;
 import com.flipkart.android.proteus.binding.Binding;
 import com.flipkart.android.proteus.builder.LayoutBuilder;
 import com.flipkart.android.proteus.parser.LayoutHandler;
-import com.flipkart.android.proteus.providers.AttributeValue;
 import com.flipkart.android.proteus.providers.Data;
 import com.flipkart.android.proteus.providers.DataContext;
 import com.flipkart.android.proteus.providers.Layout;
@@ -86,9 +85,9 @@ public interface ProteusViewManager {
 
     int getUniqueViewId(String id);
 
-    AttributeValue get(String dataPath, int index);
+    //AttributeValue get(String dataPath, int index);
 
-    void set(String dataPath, AttributeValue newValue);
+    //void set(String dataPath, AttributeValue newValue);
 
     void set(String dataPath, String newValue);
 

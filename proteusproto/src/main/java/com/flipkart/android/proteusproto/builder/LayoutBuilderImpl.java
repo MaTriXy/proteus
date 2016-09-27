@@ -1,12 +1,12 @@
 package com.flipkart.android.proteusproto.builder;
 
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.flipkart.android.proteus.builder.LayoutBuilder;
 import com.flipkart.android.proteus.builder.LayoutBuilderCallback;
 import com.flipkart.android.proteus.parser.LayoutHandler;
-import com.flipkart.android.proteus.providers.AttributeKeyValue;
 import com.flipkart.android.proteus.providers.Data;
 import com.flipkart.android.proteus.providers.Layout;
 import com.flipkart.android.proteus.providers.Styles;
@@ -26,7 +26,7 @@ public class LayoutBuilderImpl implements LayoutBuilder {
     @Override
     public void registerHandler(String type, LayoutHandler handler) {
         //TODO add implementation for handler.prepareAttributeHandlers
-        handler.prepareAttributeHandlers();
+        //handler.prepareAttributeHandlers();
         layoutHandlers.put(type, handler);
     }
 
@@ -58,14 +58,8 @@ public class LayoutBuilderImpl implements LayoutBuilder {
         assert handler != null;
         view = handler.createView(parent, layout, data, styles, index);
 
-        Collection<AttributeKeyValue> attributes = layout.getAttributes();
-        assert attributes != null;
-        if (attributes.size() > 0) {
-            for (AttributeKeyValue attributeKeyValue : attributes) {
-                //TODO add implementation for handler.handleAttribute
-                handler.handleAttribute(view, attributeKeyValue);
-            }
-        }
+        //TODO add implementation for handler.handleAttributes
+        handler.handleAttributes((View) view, layout.getAnyViewOrViewGroup());
 
         Collection<Layout> layoutChildren = layout.getChildren();
         assert layoutChildren != null;
