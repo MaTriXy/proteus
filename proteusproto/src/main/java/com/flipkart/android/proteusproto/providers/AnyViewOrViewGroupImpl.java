@@ -38,10 +38,26 @@ class AnyViewOrViewGroupImpl implements AnyViewOrViewGroup<ProteusLayout.AnyView
 
     @Override
     public Collection<Layout> getViewGroupChildren() {
-        List<ProteusLayout.AnyViewOrViewGroup> anyViewOrViewGroupList = anyViewOrViewGroup.getViewGroup().getAnyViewOrViewGroupList();
+        List<ProteusLayout.AnyViewOrViewGroup> anyViewOrViewGroupList;
+        switch (getViewOrViewGroupType()) {
+            case "LINEARLAYOUT":
+                anyViewOrViewGroupList = anyViewOrViewGroup.getLinearLayout().getViewGroup().getAnyViewOrViewGroupList();
+                break;
+            case "FRAMELAYOUT":
+                anyViewOrViewGroupList = anyViewOrViewGroup.getFrameLayout().getViewGroup().getAnyViewOrViewGroupList();
+                break;
+            case "VIEWGROUP":
+                anyViewOrViewGroupList = anyViewOrViewGroup.getViewGroup().getAnyViewOrViewGroupList();
+                break;
+            default:
+                anyViewOrViewGroupList = null;
+                break;
+        }
         List<Layout> childLayoutList = new ArrayList<>();
-        for (ProteusLayout.AnyViewOrViewGroup anyViewOrViewGroup : anyViewOrViewGroupList) {
-            childLayoutList.add(new LayoutImpl(anyViewOrViewGroup));
+        if (null != anyViewOrViewGroupList) {
+            for (ProteusLayout.AnyViewOrViewGroup anyViewOrViewGroup : anyViewOrViewGroupList) {
+                childLayoutList.add(new LayoutImpl(anyViewOrViewGroup));
+            }
         }
         return childLayoutList;
     }

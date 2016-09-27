@@ -21,6 +21,11 @@ public final class ProteusLayout {
      * <code>optional int32 layoutHeight = 2;</code>
      */
     int getLayoutHeight();
+
+    /**
+     * <code>optional int32 weight = 3;</code>
+     */
+    int getWeight();
   }
   /**
    * Protobuf type {@code LayoutParams}
@@ -78,6 +83,29 @@ public final class ProteusLayout {
       layoutHeight_ = 0;
     }
 
+    public static final int WEIGHT_FIELD_NUMBER = 3;
+    private int weight_;
+    /**
+     * <code>optional int32 weight = 3;</code>
+     */
+    public int getWeight() {
+      return weight_;
+    }
+    /**
+     * <code>optional int32 weight = 3;</code>
+     */
+    private void setWeight(int value) {
+      
+      weight_ = value;
+    }
+    /**
+     * <code>optional int32 weight = 3;</code>
+     */
+    private void clearWeight() {
+      
+      weight_ = 0;
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (layoutWidth_ != 0) {
@@ -85,6 +113,9 @@ public final class ProteusLayout {
       }
       if (layoutHeight_ != 0) {
         output.writeInt32(2, layoutHeight_);
+      }
+      if (weight_ != 0) {
+        output.writeInt32(3, weight_);
       }
     }
 
@@ -100,6 +131,10 @@ public final class ProteusLayout {
       if (layoutHeight_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, layoutHeight_);
+      }
+      if (weight_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, weight_);
       }
       memoizedSerializedSize = size;
       return size;
@@ -233,6 +268,29 @@ public final class ProteusLayout {
         return this;
       }
 
+      /**
+       * <code>optional int32 weight = 3;</code>
+       */
+      public int getWeight() {
+        return instance.getWeight();
+      }
+      /**
+       * <code>optional int32 weight = 3;</code>
+       */
+      public Builder setWeight(int value) {
+        copyOnWrite();
+        instance.setWeight(value);
+        return this;
+      }
+      /**
+       * <code>optional int32 weight = 3;</code>
+       */
+      public Builder clearWeight() {
+        copyOnWrite();
+        instance.clearWeight();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:LayoutParams)
     }
     protected final Object dynamicMethod(
@@ -258,6 +316,8 @@ public final class ProteusLayout {
               other.layoutWidth_ != 0, other.layoutWidth_);
           layoutHeight_ = visitor.visitInt(layoutHeight_ != 0, layoutHeight_,
               other.layoutHeight_ != 0, other.layoutHeight_);
+          weight_ = visitor.visitInt(weight_ != 0, weight_,
+              other.weight_ != 0, other.weight_);
           if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
               .INSTANCE) {
           }
@@ -290,6 +350,11 @@ public final class ProteusLayout {
                 case 16: {
 
                   layoutHeight_ = input.readInt32();
+                  break;
+                }
+                case 24: {
+
+                  weight_ = input.readInt32();
                   break;
                 }
               }
@@ -355,6 +420,31 @@ public final class ProteusLayout {
      * <code>optional int32 backgroundColor = 2;</code>
      */
     int getBackgroundColor();
+
+    /**
+     * <code>optional int32 paddingLeft = 3;</code>
+     */
+    int getPaddingLeft();
+
+    /**
+     * <code>optional int32 paddingRight = 4;</code>
+     */
+    int getPaddingRight();
+
+    /**
+     * <code>optional int32 paddingTop = 5;</code>
+     */
+    int getPaddingTop();
+
+    /**
+     * <code>optional int32 paddingBottom = 6;</code>
+     */
+    int getPaddingBottom();
+
+    /**
+     * <code>optional int32 elevation = 7;</code>
+     */
+    int getElevation();
   }
   /**
    * Protobuf type {@code View}
@@ -441,6 +531,121 @@ public final class ProteusLayout {
       backgroundColor_ = 0;
     }
 
+    public static final int PADDINGLEFT_FIELD_NUMBER = 3;
+    private int paddingLeft_;
+    /**
+     * <code>optional int32 paddingLeft = 3;</code>
+     */
+    public int getPaddingLeft() {
+      return paddingLeft_;
+    }
+    /**
+     * <code>optional int32 paddingLeft = 3;</code>
+     */
+    private void setPaddingLeft(int value) {
+      
+      paddingLeft_ = value;
+    }
+    /**
+     * <code>optional int32 paddingLeft = 3;</code>
+     */
+    private void clearPaddingLeft() {
+      
+      paddingLeft_ = 0;
+    }
+
+    public static final int PADDINGRIGHT_FIELD_NUMBER = 4;
+    private int paddingRight_;
+    /**
+     * <code>optional int32 paddingRight = 4;</code>
+     */
+    public int getPaddingRight() {
+      return paddingRight_;
+    }
+    /**
+     * <code>optional int32 paddingRight = 4;</code>
+     */
+    private void setPaddingRight(int value) {
+      
+      paddingRight_ = value;
+    }
+    /**
+     * <code>optional int32 paddingRight = 4;</code>
+     */
+    private void clearPaddingRight() {
+      
+      paddingRight_ = 0;
+    }
+
+    public static final int PADDINGTOP_FIELD_NUMBER = 5;
+    private int paddingTop_;
+    /**
+     * <code>optional int32 paddingTop = 5;</code>
+     */
+    public int getPaddingTop() {
+      return paddingTop_;
+    }
+    /**
+     * <code>optional int32 paddingTop = 5;</code>
+     */
+    private void setPaddingTop(int value) {
+      
+      paddingTop_ = value;
+    }
+    /**
+     * <code>optional int32 paddingTop = 5;</code>
+     */
+    private void clearPaddingTop() {
+      
+      paddingTop_ = 0;
+    }
+
+    public static final int PADDINGBOTTOM_FIELD_NUMBER = 6;
+    private int paddingBottom_;
+    /**
+     * <code>optional int32 paddingBottom = 6;</code>
+     */
+    public int getPaddingBottom() {
+      return paddingBottom_;
+    }
+    /**
+     * <code>optional int32 paddingBottom = 6;</code>
+     */
+    private void setPaddingBottom(int value) {
+      
+      paddingBottom_ = value;
+    }
+    /**
+     * <code>optional int32 paddingBottom = 6;</code>
+     */
+    private void clearPaddingBottom() {
+      
+      paddingBottom_ = 0;
+    }
+
+    public static final int ELEVATION_FIELD_NUMBER = 7;
+    private int elevation_;
+    /**
+     * <code>optional int32 elevation = 7;</code>
+     */
+    public int getElevation() {
+      return elevation_;
+    }
+    /**
+     * <code>optional int32 elevation = 7;</code>
+     */
+    private void setElevation(int value) {
+      
+      elevation_ = value;
+    }
+    /**
+     * <code>optional int32 elevation = 7;</code>
+     */
+    private void clearElevation() {
+      
+      elevation_ = 0;
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (layoutParams_ != null) {
@@ -448,6 +653,21 @@ public final class ProteusLayout {
       }
       if (backgroundColor_ != 0) {
         output.writeInt32(2, backgroundColor_);
+      }
+      if (paddingLeft_ != 0) {
+        output.writeInt32(3, paddingLeft_);
+      }
+      if (paddingRight_ != 0) {
+        output.writeInt32(4, paddingRight_);
+      }
+      if (paddingTop_ != 0) {
+        output.writeInt32(5, paddingTop_);
+      }
+      if (paddingBottom_ != 0) {
+        output.writeInt32(6, paddingBottom_);
+      }
+      if (elevation_ != 0) {
+        output.writeInt32(7, elevation_);
       }
     }
 
@@ -463,6 +683,26 @@ public final class ProteusLayout {
       if (backgroundColor_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, backgroundColor_);
+      }
+      if (paddingLeft_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, paddingLeft_);
+      }
+      if (paddingRight_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, paddingRight_);
+      }
+      if (paddingTop_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, paddingTop_);
+      }
+      if (paddingBottom_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, paddingBottom_);
+      }
+      if (elevation_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, elevation_);
       }
       memoizedSerializedSize = size;
       return size;
@@ -618,6 +858,121 @@ public final class ProteusLayout {
         return this;
       }
 
+      /**
+       * <code>optional int32 paddingLeft = 3;</code>
+       */
+      public int getPaddingLeft() {
+        return instance.getPaddingLeft();
+      }
+      /**
+       * <code>optional int32 paddingLeft = 3;</code>
+       */
+      public Builder setPaddingLeft(int value) {
+        copyOnWrite();
+        instance.setPaddingLeft(value);
+        return this;
+      }
+      /**
+       * <code>optional int32 paddingLeft = 3;</code>
+       */
+      public Builder clearPaddingLeft() {
+        copyOnWrite();
+        instance.clearPaddingLeft();
+        return this;
+      }
+
+      /**
+       * <code>optional int32 paddingRight = 4;</code>
+       */
+      public int getPaddingRight() {
+        return instance.getPaddingRight();
+      }
+      /**
+       * <code>optional int32 paddingRight = 4;</code>
+       */
+      public Builder setPaddingRight(int value) {
+        copyOnWrite();
+        instance.setPaddingRight(value);
+        return this;
+      }
+      /**
+       * <code>optional int32 paddingRight = 4;</code>
+       */
+      public Builder clearPaddingRight() {
+        copyOnWrite();
+        instance.clearPaddingRight();
+        return this;
+      }
+
+      /**
+       * <code>optional int32 paddingTop = 5;</code>
+       */
+      public int getPaddingTop() {
+        return instance.getPaddingTop();
+      }
+      /**
+       * <code>optional int32 paddingTop = 5;</code>
+       */
+      public Builder setPaddingTop(int value) {
+        copyOnWrite();
+        instance.setPaddingTop(value);
+        return this;
+      }
+      /**
+       * <code>optional int32 paddingTop = 5;</code>
+       */
+      public Builder clearPaddingTop() {
+        copyOnWrite();
+        instance.clearPaddingTop();
+        return this;
+      }
+
+      /**
+       * <code>optional int32 paddingBottom = 6;</code>
+       */
+      public int getPaddingBottom() {
+        return instance.getPaddingBottom();
+      }
+      /**
+       * <code>optional int32 paddingBottom = 6;</code>
+       */
+      public Builder setPaddingBottom(int value) {
+        copyOnWrite();
+        instance.setPaddingBottom(value);
+        return this;
+      }
+      /**
+       * <code>optional int32 paddingBottom = 6;</code>
+       */
+      public Builder clearPaddingBottom() {
+        copyOnWrite();
+        instance.clearPaddingBottom();
+        return this;
+      }
+
+      /**
+       * <code>optional int32 elevation = 7;</code>
+       */
+      public int getElevation() {
+        return instance.getElevation();
+      }
+      /**
+       * <code>optional int32 elevation = 7;</code>
+       */
+      public Builder setElevation(int value) {
+        copyOnWrite();
+        instance.setElevation(value);
+        return this;
+      }
+      /**
+       * <code>optional int32 elevation = 7;</code>
+       */
+      public Builder clearElevation() {
+        copyOnWrite();
+        instance.clearElevation();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:View)
     }
     protected final Object dynamicMethod(
@@ -642,6 +997,16 @@ public final class ProteusLayout {
           layoutParams_ = visitor.visitMessage(layoutParams_, other.layoutParams_);
           backgroundColor_ = visitor.visitInt(backgroundColor_ != 0, backgroundColor_,
               other.backgroundColor_ != 0, other.backgroundColor_);
+          paddingLeft_ = visitor.visitInt(paddingLeft_ != 0, paddingLeft_,
+              other.paddingLeft_ != 0, other.paddingLeft_);
+          paddingRight_ = visitor.visitInt(paddingRight_ != 0, paddingRight_,
+              other.paddingRight_ != 0, other.paddingRight_);
+          paddingTop_ = visitor.visitInt(paddingTop_ != 0, paddingTop_,
+              other.paddingTop_ != 0, other.paddingTop_);
+          paddingBottom_ = visitor.visitInt(paddingBottom_ != 0, paddingBottom_,
+              other.paddingBottom_ != 0, other.paddingBottom_);
+          elevation_ = visitor.visitInt(elevation_ != 0, elevation_,
+              other.elevation_ != 0, other.elevation_);
           if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
               .INSTANCE) {
           }
@@ -682,6 +1047,31 @@ public final class ProteusLayout {
                 case 16: {
 
                   backgroundColor_ = input.readInt32();
+                  break;
+                }
+                case 24: {
+
+                  paddingLeft_ = input.readInt32();
+                  break;
+                }
+                case 32: {
+
+                  paddingRight_ = input.readInt32();
+                  break;
+                }
+                case 40: {
+
+                  paddingTop_ = input.readInt32();
+                  break;
+                }
+                case 48: {
+
+                  paddingBottom_ = input.readInt32();
+                  break;
+                }
+                case 56: {
+
+                  elevation_ = input.readInt32();
                   break;
                 }
               }
@@ -2060,6 +2450,21 @@ public final class ProteusLayout {
      * <code>optional int32 textSize = 4;</code>
      */
     int getTextSize();
+
+    /**
+     * <code>optional int32 textBackground = 5;</code>
+     */
+    int getTextBackground();
+
+    /**
+     * <code>optional int32 gravity = 6;</code>
+     */
+    int getGravity();
+
+    /**
+     * <code>optional bool isHtmlText = 7;</code>
+     */
+    boolean getIsHtmlText();
   }
   /**
    * Protobuf type {@code TextView}
@@ -2216,6 +2621,75 @@ public final class ProteusLayout {
       textSize_ = 0;
     }
 
+    public static final int TEXTBACKGROUND_FIELD_NUMBER = 5;
+    private int textBackground_;
+    /**
+     * <code>optional int32 textBackground = 5;</code>
+     */
+    public int getTextBackground() {
+      return textBackground_;
+    }
+    /**
+     * <code>optional int32 textBackground = 5;</code>
+     */
+    private void setTextBackground(int value) {
+      
+      textBackground_ = value;
+    }
+    /**
+     * <code>optional int32 textBackground = 5;</code>
+     */
+    private void clearTextBackground() {
+      
+      textBackground_ = 0;
+    }
+
+    public static final int GRAVITY_FIELD_NUMBER = 6;
+    private int gravity_;
+    /**
+     * <code>optional int32 gravity = 6;</code>
+     */
+    public int getGravity() {
+      return gravity_;
+    }
+    /**
+     * <code>optional int32 gravity = 6;</code>
+     */
+    private void setGravity(int value) {
+      
+      gravity_ = value;
+    }
+    /**
+     * <code>optional int32 gravity = 6;</code>
+     */
+    private void clearGravity() {
+      
+      gravity_ = 0;
+    }
+
+    public static final int ISHTMLTEXT_FIELD_NUMBER = 7;
+    private boolean isHtmlText_;
+    /**
+     * <code>optional bool isHtmlText = 7;</code>
+     */
+    public boolean getIsHtmlText() {
+      return isHtmlText_;
+    }
+    /**
+     * <code>optional bool isHtmlText = 7;</code>
+     */
+    private void setIsHtmlText(boolean value) {
+      
+      isHtmlText_ = value;
+    }
+    /**
+     * <code>optional bool isHtmlText = 7;</code>
+     */
+    private void clearIsHtmlText() {
+      
+      isHtmlText_ = false;
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (view_ != null) {
@@ -2229,6 +2703,15 @@ public final class ProteusLayout {
       }
       if (textSize_ != 0) {
         output.writeInt32(4, textSize_);
+      }
+      if (textBackground_ != 0) {
+        output.writeInt32(5, textBackground_);
+      }
+      if (gravity_ != 0) {
+        output.writeInt32(6, gravity_);
+      }
+      if (isHtmlText_ != false) {
+        output.writeBool(7, isHtmlText_);
       }
     }
 
@@ -2252,6 +2735,18 @@ public final class ProteusLayout {
       if (textSize_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, textSize_);
+      }
+      if (textBackground_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, textBackground_);
+      }
+      if (gravity_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, gravity_);
+      }
+      if (isHtmlText_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(7, isHtmlText_);
       }
       memoizedSerializedSize = size;
       return size;
@@ -2470,6 +2965,75 @@ public final class ProteusLayout {
         return this;
       }
 
+      /**
+       * <code>optional int32 textBackground = 5;</code>
+       */
+      public int getTextBackground() {
+        return instance.getTextBackground();
+      }
+      /**
+       * <code>optional int32 textBackground = 5;</code>
+       */
+      public Builder setTextBackground(int value) {
+        copyOnWrite();
+        instance.setTextBackground(value);
+        return this;
+      }
+      /**
+       * <code>optional int32 textBackground = 5;</code>
+       */
+      public Builder clearTextBackground() {
+        copyOnWrite();
+        instance.clearTextBackground();
+        return this;
+      }
+
+      /**
+       * <code>optional int32 gravity = 6;</code>
+       */
+      public int getGravity() {
+        return instance.getGravity();
+      }
+      /**
+       * <code>optional int32 gravity = 6;</code>
+       */
+      public Builder setGravity(int value) {
+        copyOnWrite();
+        instance.setGravity(value);
+        return this;
+      }
+      /**
+       * <code>optional int32 gravity = 6;</code>
+       */
+      public Builder clearGravity() {
+        copyOnWrite();
+        instance.clearGravity();
+        return this;
+      }
+
+      /**
+       * <code>optional bool isHtmlText = 7;</code>
+       */
+      public boolean getIsHtmlText() {
+        return instance.getIsHtmlText();
+      }
+      /**
+       * <code>optional bool isHtmlText = 7;</code>
+       */
+      public Builder setIsHtmlText(boolean value) {
+        copyOnWrite();
+        instance.setIsHtmlText(value);
+        return this;
+      }
+      /**
+       * <code>optional bool isHtmlText = 7;</code>
+       */
+      public Builder clearIsHtmlText() {
+        copyOnWrite();
+        instance.clearIsHtmlText();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:TextView)
     }
     protected final Object dynamicMethod(
@@ -2498,6 +3062,12 @@ public final class ProteusLayout {
               other.textColor_ != 0, other.textColor_);
           textSize_ = visitor.visitInt(textSize_ != 0, textSize_,
               other.textSize_ != 0, other.textSize_);
+          textBackground_ = visitor.visitInt(textBackground_ != 0, textBackground_,
+              other.textBackground_ != 0, other.textBackground_);
+          gravity_ = visitor.visitInt(gravity_ != 0, gravity_,
+              other.gravity_ != 0, other.gravity_);
+          isHtmlText_ = visitor.visitBoolean(isHtmlText_ != false, isHtmlText_,
+              other.isHtmlText_ != false, other.isHtmlText_);
           if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
               .INSTANCE) {
           }
@@ -2549,6 +3119,21 @@ public final class ProteusLayout {
                 case 32: {
 
                   textSize_ = input.readInt32();
+                  break;
+                }
+                case 40: {
+
+                  textBackground_ = input.readInt32();
+                  break;
+                }
+                case 48: {
+
+                  gravity_ = input.readInt32();
+                  break;
+                }
+                case 56: {
+
+                  isHtmlText_ = input.readBool();
                   break;
                 }
               }

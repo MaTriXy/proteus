@@ -4,6 +4,7 @@ import android.content.res.XmlResourceParser;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.flipkart.android.proteus.builder.LayoutBuilder;
 import com.flipkart.android.proteus.parser.AttributeProcessor;
 import com.flipkart.android.proteus.parser.LayoutHandler;
 import com.flipkart.android.proteus.providers.Data;
@@ -52,16 +53,20 @@ abstract class LayoutHandlerImpl<V extends View> implements LayoutHandler<V> {
     }
 
     @Override
-    public boolean handleChildLayout(ProteusView view, Layout layout) {
+    public boolean handleChildLayout(ProteusView view, Layout layout, LayoutBuilder layoutBuilder) {
         return false;
     }
 
     @Override
     public boolean addView(ProteusView parent, ProteusView view) {
+        if (parent instanceof ViewGroup) {
+            ((ViewGroup) parent).addView((View) view);
+            return true;
+        }
         return false;
     }
 
-    ViewGroup.LayoutParams generateDefaultLayoutParams(ViewGroup parent) throws IOException, XmlPullParserException {
+    private ViewGroup.LayoutParams generateDefaultLayoutParams(ViewGroup parent) throws IOException, XmlPullParserException {
 
         /**
          * This whole method is a hack! To generate layout params, since no other way exists.
@@ -82,5 +87,5 @@ abstract class LayoutHandlerImpl<V extends View> implements LayoutHandler<V> {
         return parent.generateLayoutParams(sParser);
     }
 
-    abstract boolean handleViewAttributes(V view, ProteusLayout.View viewAttributes);
+    abstract boolean handleViewAttributes(V view, ProteusLayout.View viewAttributes, V parentView);
 }

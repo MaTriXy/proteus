@@ -11,24 +11,24 @@ import java.util.Collection;
  */
 
 public class LayoutImpl implements Layout {
-    private AnyViewOrViewGroupImpl anyViewOrViewGroup;
+    private AnyViewOrViewGroupImpl anyViewOrViewGroupImpl;
 
     public LayoutImpl(ProteusLayout.AnyViewOrViewGroup anyViewOrViewGroup) {
-        this.anyViewOrViewGroup = new AnyViewOrViewGroupImpl(anyViewOrViewGroup);
+        this.anyViewOrViewGroupImpl = new AnyViewOrViewGroupImpl(anyViewOrViewGroup);
     }
 
     @Override
     public String getType() {
-        return anyViewOrViewGroup.getViewOrViewGroupType();
+        return anyViewOrViewGroupImpl.getViewOrViewGroupType();
     }
 
     @Override
     public AnyViewOrViewGroup getAnyViewOrViewGroup() {
-        return anyViewOrViewGroup;
+        return anyViewOrViewGroupImpl;
     }
 
     @Override
     public Collection<Layout> getChildren() {
-        return anyViewOrViewGroup.isViewGroup() ? anyViewOrViewGroup.getViewGroupChildren() : null;
+        return anyViewOrViewGroupImpl.getViewGroupChildren();
     }
 }

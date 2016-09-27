@@ -6,11 +6,17 @@ option optimize_for = LITE_RUNTIME;
 message LayoutParams {
     int32 layoutWidth = 1;
     int32 layoutHeight = 2;
+    int32 weight = 3;
 }
 
 message View {
     LayoutParams layoutParams = 1;
     int32 backgroundColor = 2;
+    int32 paddingLeft = 3;
+    int32 paddingRight = 4;
+    int32 paddingTop = 5;
+    int32 paddingBottom = 6;
+    int32 elevation = 7;
 }
 
 message ViewGroup {
@@ -32,6 +38,9 @@ message TextView {
     string text = 2;
     int32 textColor = 3;
     int32 textSize = 4;
+    int32 textBackground = 5;
+    int32 gravity = 6;
+    bool isHtmlText = 7;
 }
 
 message Button {

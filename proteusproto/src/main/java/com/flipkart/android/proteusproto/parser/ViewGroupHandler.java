@@ -3,6 +3,7 @@ package com.flipkart.android.proteusproto.parser;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.flipkart.android.proteus.builder.LayoutBuilder;
 import com.flipkart.android.proteus.providers.AnyViewOrViewGroup;
 import com.flipkart.android.proteus.providers.Data;
 import com.flipkart.android.proteus.providers.Layout;
@@ -21,17 +22,25 @@ abstract class ViewGroupHandler extends ViewHandler {
     }
 
     @Override
-    public boolean handleAttributes(View view, AnyViewOrViewGroup anyViewOrViewGroup) {
-        return handleViewGroupAttributes(view, ((ProteusLayout.AnyViewOrViewGroup) anyViewOrViewGroup.getAnyViewOrViewGroup()).getViewGroup());
+    public boolean handleAttributes(View view, AnyViewOrViewGroup anyViewOrViewGroup, View parentView) {
+        return handleViewGroupAttributes(view, ((ProteusLayout.AnyViewOrViewGroup) anyViewOrViewGroup.getAnyViewOrViewGroup()).getViewGroup(), parentView);
     }
 
     @Override
-    boolean handleViewGroupAttributes(View view, ProteusLayout.ViewGroup viewGroupAttributes) {
+    boolean handleViewGroupAttributes(View view, ProteusLayout.ViewGroup viewGroupAttributes, View parentView) {
         //TODO handle ViewGroup attributes here
         //TODO ---------------------------------
 
-        return super.handleViewAttributes(view, viewGroupAttributes.getView());
+        return super.handleViewAttributes(view, viewGroupAttributes.getView(), parentView);
     }
 
-    abstract boolean handleFrameLayoutAttributes(View view, ProteusLayout.FrameLayout frameLayoutAttributes);
+    @Override
+    public boolean handleChildLayout(ProteusView view, Layout layout, LayoutBuilder layoutBuilder) {
+        ProteusView child;
+        child = layoutBuilder.build((ViewGroup) view, layout, null, 0, null);
+        addView(view, child);
+        return true;
+    }
+
+    abstract boolean handleLayoutAttributes(View view, Object layoutAttributes, View parentView);
 }

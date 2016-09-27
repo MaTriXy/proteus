@@ -19,6 +19,7 @@ package com.flipkart.android.proteus.parser;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.flipkart.android.proteus.builder.LayoutBuilder;
 import com.flipkart.android.proteus.providers.AnyViewOrViewGroup;
 import com.flipkart.android.proteus.providers.Data;
 import com.flipkart.android.proteus.providers.Layout;
@@ -40,9 +41,9 @@ public interface LayoutHandler<V extends View> {
 
     void addHandler(String attributeKey, AttributeProcessor handler);
 
-    boolean handleAttributes(V view, AnyViewOrViewGroup anyViewOrViewGroup);
+    boolean handleAttributes(V view, AnyViewOrViewGroup anyViewOrViewGroup, V parent);
 
-    boolean handleChildLayout(ProteusView view, Layout layout);
+    boolean handleChildLayout(ProteusView view, Layout layout, LayoutBuilder layoutBuilder);
 
     boolean addView(ProteusView parent, ProteusView view);
 }

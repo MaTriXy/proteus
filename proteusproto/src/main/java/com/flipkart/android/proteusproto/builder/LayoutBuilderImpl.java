@@ -21,10 +21,10 @@ import java.util.HashMap;
  * @author kushal.sharma
  */
 public class LayoutBuilderImpl implements LayoutBuilder {
-    private HashMap<String, LayoutHandler> layoutHandlers = new HashMap<>();
+    private HashMap<String, LayoutHandler<View>> layoutHandlers = new HashMap<>();
 
     @Override
-    public void registerHandler(String type, LayoutHandler handler) {
+    public void registerHandler(String type, LayoutHandler<View> handler) {
         //TODO add implementation for handler.prepareAttributeHandlers
         //handler.prepareAttributeHandlers();
         layoutHandlers.put(type, handler);
@@ -36,7 +36,7 @@ public class LayoutBuilderImpl implements LayoutBuilder {
     }
 
     @Override
-    public LayoutHandler getHandler(String type) {
+    public LayoutHandler<View> getHandler(String type) {
         return layoutHandlers.get(type);
     }
 
@@ -50,7 +50,7 @@ public class LayoutBuilderImpl implements LayoutBuilder {
             throw new IllegalArgumentException("'Type' missing in layout: " + layout.toString());
         }
 
-        LayoutHandler handler = layoutHandlers.get(type);
+        LayoutHandler<View> handler = layoutHandlers.get(type);
         if (null == handler) {
             Log.e("LayoutBuilderImpl", "No handler for layout type " + type + ". Did you forget to register the handler?");
         }
@@ -61,14 +61,13 @@ public class LayoutBuilderImpl implements LayoutBuilder {
         handler.onAfterCreateView((View) view, parent, layout, data, styles, index);
 
         //TODO add implementation for handler.handleAttributes
-        handler.handleAttributes((View) view, layout.getAnyViewOrViewGroup());
+        handler.handleAttributes((View) view, layout.getAnyViewOrViewGroup(), parent);
 
         Collection<Layout> layoutChildren = layout.getChildren();
-        assert layoutChildren != null;
-        if (layoutChildren.size() > 0) {
+        if (null != layoutChildren && layoutChildren.size() > 0) {
             for (Layout layoutChild : layoutChildren) {
                 //TODO add implementation for handler.handleChildLayout
-                handler.handleChildLayout(view, layoutChild);
+                handler.handleChildLayout(view, layoutChild, this);
             }
         }
         return view;
