@@ -31,6 +31,7 @@ import com.flipkart.android.proteusproto.models.ProteusLayout;
 import com.flipkart.android.proteusproto.parser.FrameLayoutHandler;
 import com.flipkart.android.proteusproto.parser.ImageViewHandler;
 import com.flipkart.android.proteusproto.parser.LinearLayoutHandler;
+import com.flipkart.android.proteusproto.parser.ScrollViewHandler;
 import com.flipkart.android.proteusproto.parser.TextViewHandler;
 import com.flipkart.android.proteusproto.providers.LayoutImpl;
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -55,12 +56,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 List<ProteusLayout.AnyViewOrViewGroup> anyViewOrViewGroups = new ArrayList<>();
 
-                anyViewOrViewGroups.add(generateProteusTextView(-1, 0, "TextView", Color.WHITE, 0, 0, 40, 0, 4, 4, 0, false, 0));
-                anyViewOrViewGroups.add(generateProteusTextView(-1, 0, "<b>TextView</b> with <font color=#cc8322><i>HTML</i></font> content.", Color.WHITE, 0, 0, 0, 0, 4, 4, 5, true, 0));
+                anyViewOrViewGroups.add(generateProteusTextView(-1, 0, "TextView", Color.WHITE, 0, 0, 40, 0, 4, 4, 0, false, 0, 0, 0, 0, 0, 0));
+                anyViewOrViewGroups.add(generateProteusTextView(-1, 0, "<b>TextView</b> with <font color=#cc8322><i>HTML</i></font> content.", Color.WHITE, 0, 0, 0, 0, 4, 4, 5, true, 0, 0, 0, 0, 0, 0));
                 anyViewOrViewGroups.add(generateProteusImageView(300, 300, null, Color.TRANSPARENT, 0, 0, 0, 30, 4, 4, 5, false));
                 anyViewOrViewGroups.add(generateProteusLinearHorizontalLayoutWithTextViews());
+                //anyViewOrViewGroups.add(generateProteusTextView(-1, 0, "TextView", Color.WHITE, 0, 0, 100, 0, 4, 4, 0, false, 0, 0, 0, 0, 0, 0));
+                //anyViewOrViewGroups.add(generateProteusTextView(-1, 0, "<b>TextView</b> with <font color=#cc8322><i>HTML</i></font> content.", Color.WHITE, 0, 0, 30, 0, 4, 4, 0, true, 0, 0, 0, 0, 0, 0));
 
-                ProteusLayout.AnyViewOrViewGroup proteusLayout = generateProteusFrameLayoutWith(generateProteusLinearLayoutVertical(anyViewOrViewGroups));
+                ProteusLayout.AnyViewOrViewGroup proteusLayout = generateProteusScrollViewWith(generateProteusFrameLayoutWith(generateProteusLinearLayoutVertical(anyViewOrViewGroups)));
                 byte[] bytes = getBytes(proteusLayout);
                 containerView.removeAllViews();
                 ProteusView proteusView = makeProteusProtoLayout(bytes);
@@ -90,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         layoutBuilder.registerHandler("TEXTVIEW", new TextViewHandler());
         layoutBuilder.registerHandler("BUTTON", null);
         layoutBuilder.registerHandler("IMAGEVIEW", new ImageViewHandler());
+        layoutBuilder.registerHandler("SCROLLVIEW", new ScrollViewHandler());
         // get the proteusView from layout
         return getBuild(layout, layoutBuilder);
     }
@@ -138,6 +142,33 @@ public class MainActivity extends AppCompatActivity {
         return ProteusLayout.AnyViewOrViewGroup.getDefaultInstance().newBuilderForType().setFrameLayout(frameLayout).build();
     }
 
+    private ProteusLayout.AnyViewOrViewGroup generateProteusScrollViewWith(ProteusLayout.AnyViewOrViewGroup anyViewOrViewGroup) {
+        ProteusLayout.LayoutParams scrollViewParams = ProteusLayout.LayoutParams
+                .getDefaultInstance()
+                .newBuilderForType()
+                .setLayoutHeight(-1)
+                .setLayoutWidth(-1)
+                .build();
+        ProteusLayout.View scrollViewView = ProteusLayout.View
+                .getDefaultInstance()
+                .newBuilderForType()
+                .setLayoutParams(scrollViewParams)
+                .setBackgroundColor(Color.WHITE)
+                .build();
+        ProteusLayout.ViewGroup scrollViewViewGroup = ProteusLayout.ViewGroup
+                .getDefaultInstance()
+                .newBuilderForType()
+                .setView(scrollViewView)
+                .addAnyViewOrViewGroup(anyViewOrViewGroup)
+                .build();
+        ProteusLayout.ScrollView scrollLayout = ProteusLayout.ScrollView
+                .getDefaultInstance()
+                .newBuilderForType()
+                .setViewGroup(scrollViewViewGroup)
+                .build();
+        return ProteusLayout.AnyViewOrViewGroup.getDefaultInstance().newBuilderForType().setScrollView(scrollLayout).build();
+    }
+
     private ProteusLayout.AnyViewOrViewGroup generateProteusLinearLayoutVertical(List<ProteusLayout.AnyViewOrViewGroup> list) {
 
         ProteusLayout.LayoutParams linearLayoutParams = ProteusLayout.LayoutParams
@@ -167,7 +198,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private ProteusLayout.AnyViewOrViewGroup generateProteusTextView(int width, int height, String text, int backgroundColor, int weight, int textSize,
-                                                                     int pT, int pB, int pR, int pL, int gravity, boolean isHtml, int textColor) {
+                                                                     int pT, int pB, int pR, int pL, int gravity, boolean isHtml, int textColor,
+                                                                     int borderWidth, int borderColor, int borderBackgroundColor, int marginLeft, int marginRight) {
         ProteusLayout.LayoutParams textViewParams = ProteusLayout.LayoutParams
                 .getDefaultInstance()
                 .newBuilderForType()
@@ -183,6 +215,11 @@ public class MainActivity extends AppCompatActivity {
                 .setPaddingBottom(pB)
                 .setPaddingRight(pR)
                 .setPaddingLeft(pL)
+                .setBorderWidth(borderWidth)
+                .setBorderColor(borderColor)
+                .setBorderBackgroundColor(borderBackgroundColor)
+                .setMarginLeft(marginLeft)
+                .setMarginRight(marginRight)
                 .build();
         ProteusLayout.TextView textView = ProteusLayout.TextView
                 .getDefaultInstance()
@@ -228,9 +265,9 @@ public class MainActivity extends AppCompatActivity {
 
     private ProteusLayout.AnyViewOrViewGroup generateProteusLinearHorizontalLayoutWithTextViews() {
         List<ProteusLayout.AnyViewOrViewGroup> anyViewOrViewGroups = new ArrayList<>();
-        anyViewOrViewGroups.add(generateProteusTextView(0, 0, "1", Color.parseColor("#d3d3d3"), 2, 0, 40, 40, 1, 1, 17, false, Color.parseColor("#00a300"))); // 17 for center
-        anyViewOrViewGroups.add(generateProteusTextView(0, 0, "2", Color.parseColor("#d3d3d3"), 3, 0, 40, 40, 1, 1, 17, false, Color.parseColor("#00a300")));
-        anyViewOrViewGroups.add(generateProteusTextView(0, 0, "3", Color.parseColor("#d3d3d3"), 4, 0, 40, 40, 1, 1, 17, false, Color.parseColor("#00a300")));
+        anyViewOrViewGroups.add(generateProteusTextView(0, 0, "1", Color.TRANSPARENT, 2, 0, 20, 20, 1, 1, 17, false, Color.parseColor("#2EDB82"), 5, Color.parseColor("#cccccc"), Color.parseColor("#EFEFEF"), 1, 20)); // 17 for center
+        anyViewOrViewGroups.add(generateProteusTextView(0, 0, "2", Color.TRANSPARENT, 3, 0, 20, 20, 1, 1, 17, false, Color.parseColor("#2EDB82"), 5, Color.parseColor("#cccccc"), Color.parseColor("#EFEFEF"), 20, 20));
+        anyViewOrViewGroups.add(generateProteusTextView(0, 0, "3", Color.TRANSPARENT, 4, 0, 20, 20, 1, 1, 17, false, Color.parseColor("#2EDB82"), 5, Color.parseColor("#cccccc"), Color.parseColor("#EFEFEF"), 20, 1));
         ProteusLayout.LayoutParams linearLayoutParams = ProteusLayout.LayoutParams
                 .getDefaultInstance()
                 .newBuilderForType()

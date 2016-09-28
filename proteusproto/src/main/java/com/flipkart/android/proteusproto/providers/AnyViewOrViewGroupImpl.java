@@ -30,6 +30,7 @@ class AnyViewOrViewGroupImpl implements AnyViewOrViewGroup<ProteusLayout.AnyView
             case "LINEARLAYOUT":
             case "FRAMELAYOUT":
             case "VIEWGROUP":
+            case "SCROLLVIEW":
                 return true;
             default:
                 return false;
@@ -48,6 +49,9 @@ class AnyViewOrViewGroupImpl implements AnyViewOrViewGroup<ProteusLayout.AnyView
                 break;
             case "VIEWGROUP":
                 anyViewOrViewGroupList = anyViewOrViewGroup.getViewGroup().getAnyViewOrViewGroupList();
+                break;
+            case "SCROLLVIEW":
+                anyViewOrViewGroupList = anyViewOrViewGroup.getScrollView().getViewGroup().getAnyViewOrViewGroupList();
                 break;
             default:
                 anyViewOrViewGroupList = null;

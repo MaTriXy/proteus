@@ -17,6 +17,11 @@ message View {
     int32 paddingTop = 5;
     int32 paddingBottom = 6;
     int32 elevation = 7;
+    int32 borderWidth = 8;
+    int32 borderColor = 9;
+    int32 borderBackgroundColor = 10;
+    int32 marginLeft = 11;
+    int32 marginRight = 12;
 }
 
 message ViewGroup {
@@ -55,6 +60,10 @@ message Button {
     int32 textSize = 4;
 }
 
+message ScrollView {
+    ViewGroup viewGroup = 1;
+}
+
 message AnyViewOrViewGroup {
     oneof viewOrViewGroupType {
         TextView textView = 1;
@@ -64,5 +73,6 @@ message AnyViewOrViewGroup {
         View view = 5;
         ViewGroup viewGroup = 6;
         ImageView imageView = 7;
+        ScrollView scrollView = 8;
     }
 }

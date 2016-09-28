@@ -445,6 +445,31 @@ public final class ProteusLayout {
      * <code>optional int32 elevation = 7;</code>
      */
     int getElevation();
+
+    /**
+     * <code>optional int32 borderWidth = 8;</code>
+     */
+    int getBorderWidth();
+
+    /**
+     * <code>optional int32 borderColor = 9;</code>
+     */
+    int getBorderColor();
+
+    /**
+     * <code>optional int32 borderBackgroundColor = 10;</code>
+     */
+    int getBorderBackgroundColor();
+
+    /**
+     * <code>optional int32 marginLeft = 11;</code>
+     */
+    int getMarginLeft();
+
+    /**
+     * <code>optional int32 marginRight = 12;</code>
+     */
+    int getMarginRight();
   }
   /**
    * Protobuf type {@code View}
@@ -646,6 +671,121 @@ public final class ProteusLayout {
       elevation_ = 0;
     }
 
+    public static final int BORDERWIDTH_FIELD_NUMBER = 8;
+    private int borderWidth_;
+    /**
+     * <code>optional int32 borderWidth = 8;</code>
+     */
+    public int getBorderWidth() {
+      return borderWidth_;
+    }
+    /**
+     * <code>optional int32 borderWidth = 8;</code>
+     */
+    private void setBorderWidth(int value) {
+      
+      borderWidth_ = value;
+    }
+    /**
+     * <code>optional int32 borderWidth = 8;</code>
+     */
+    private void clearBorderWidth() {
+      
+      borderWidth_ = 0;
+    }
+
+    public static final int BORDERCOLOR_FIELD_NUMBER = 9;
+    private int borderColor_;
+    /**
+     * <code>optional int32 borderColor = 9;</code>
+     */
+    public int getBorderColor() {
+      return borderColor_;
+    }
+    /**
+     * <code>optional int32 borderColor = 9;</code>
+     */
+    private void setBorderColor(int value) {
+      
+      borderColor_ = value;
+    }
+    /**
+     * <code>optional int32 borderColor = 9;</code>
+     */
+    private void clearBorderColor() {
+      
+      borderColor_ = 0;
+    }
+
+    public static final int BORDERBACKGROUNDCOLOR_FIELD_NUMBER = 10;
+    private int borderBackgroundColor_;
+    /**
+     * <code>optional int32 borderBackgroundColor = 10;</code>
+     */
+    public int getBorderBackgroundColor() {
+      return borderBackgroundColor_;
+    }
+    /**
+     * <code>optional int32 borderBackgroundColor = 10;</code>
+     */
+    private void setBorderBackgroundColor(int value) {
+      
+      borderBackgroundColor_ = value;
+    }
+    /**
+     * <code>optional int32 borderBackgroundColor = 10;</code>
+     */
+    private void clearBorderBackgroundColor() {
+      
+      borderBackgroundColor_ = 0;
+    }
+
+    public static final int MARGINLEFT_FIELD_NUMBER = 11;
+    private int marginLeft_;
+    /**
+     * <code>optional int32 marginLeft = 11;</code>
+     */
+    public int getMarginLeft() {
+      return marginLeft_;
+    }
+    /**
+     * <code>optional int32 marginLeft = 11;</code>
+     */
+    private void setMarginLeft(int value) {
+      
+      marginLeft_ = value;
+    }
+    /**
+     * <code>optional int32 marginLeft = 11;</code>
+     */
+    private void clearMarginLeft() {
+      
+      marginLeft_ = 0;
+    }
+
+    public static final int MARGINRIGHT_FIELD_NUMBER = 12;
+    private int marginRight_;
+    /**
+     * <code>optional int32 marginRight = 12;</code>
+     */
+    public int getMarginRight() {
+      return marginRight_;
+    }
+    /**
+     * <code>optional int32 marginRight = 12;</code>
+     */
+    private void setMarginRight(int value) {
+      
+      marginRight_ = value;
+    }
+    /**
+     * <code>optional int32 marginRight = 12;</code>
+     */
+    private void clearMarginRight() {
+      
+      marginRight_ = 0;
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (layoutParams_ != null) {
@@ -668,6 +808,21 @@ public final class ProteusLayout {
       }
       if (elevation_ != 0) {
         output.writeInt32(7, elevation_);
+      }
+      if (borderWidth_ != 0) {
+        output.writeInt32(8, borderWidth_);
+      }
+      if (borderColor_ != 0) {
+        output.writeInt32(9, borderColor_);
+      }
+      if (borderBackgroundColor_ != 0) {
+        output.writeInt32(10, borderBackgroundColor_);
+      }
+      if (marginLeft_ != 0) {
+        output.writeInt32(11, marginLeft_);
+      }
+      if (marginRight_ != 0) {
+        output.writeInt32(12, marginRight_);
       }
     }
 
@@ -703,6 +858,26 @@ public final class ProteusLayout {
       if (elevation_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(7, elevation_);
+      }
+      if (borderWidth_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(8, borderWidth_);
+      }
+      if (borderColor_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(9, borderColor_);
+      }
+      if (borderBackgroundColor_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(10, borderBackgroundColor_);
+      }
+      if (marginLeft_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(11, marginLeft_);
+      }
+      if (marginRight_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(12, marginRight_);
       }
       memoizedSerializedSize = size;
       return size;
@@ -973,6 +1148,121 @@ public final class ProteusLayout {
         return this;
       }
 
+      /**
+       * <code>optional int32 borderWidth = 8;</code>
+       */
+      public int getBorderWidth() {
+        return instance.getBorderWidth();
+      }
+      /**
+       * <code>optional int32 borderWidth = 8;</code>
+       */
+      public Builder setBorderWidth(int value) {
+        copyOnWrite();
+        instance.setBorderWidth(value);
+        return this;
+      }
+      /**
+       * <code>optional int32 borderWidth = 8;</code>
+       */
+      public Builder clearBorderWidth() {
+        copyOnWrite();
+        instance.clearBorderWidth();
+        return this;
+      }
+
+      /**
+       * <code>optional int32 borderColor = 9;</code>
+       */
+      public int getBorderColor() {
+        return instance.getBorderColor();
+      }
+      /**
+       * <code>optional int32 borderColor = 9;</code>
+       */
+      public Builder setBorderColor(int value) {
+        copyOnWrite();
+        instance.setBorderColor(value);
+        return this;
+      }
+      /**
+       * <code>optional int32 borderColor = 9;</code>
+       */
+      public Builder clearBorderColor() {
+        copyOnWrite();
+        instance.clearBorderColor();
+        return this;
+      }
+
+      /**
+       * <code>optional int32 borderBackgroundColor = 10;</code>
+       */
+      public int getBorderBackgroundColor() {
+        return instance.getBorderBackgroundColor();
+      }
+      /**
+       * <code>optional int32 borderBackgroundColor = 10;</code>
+       */
+      public Builder setBorderBackgroundColor(int value) {
+        copyOnWrite();
+        instance.setBorderBackgroundColor(value);
+        return this;
+      }
+      /**
+       * <code>optional int32 borderBackgroundColor = 10;</code>
+       */
+      public Builder clearBorderBackgroundColor() {
+        copyOnWrite();
+        instance.clearBorderBackgroundColor();
+        return this;
+      }
+
+      /**
+       * <code>optional int32 marginLeft = 11;</code>
+       */
+      public int getMarginLeft() {
+        return instance.getMarginLeft();
+      }
+      /**
+       * <code>optional int32 marginLeft = 11;</code>
+       */
+      public Builder setMarginLeft(int value) {
+        copyOnWrite();
+        instance.setMarginLeft(value);
+        return this;
+      }
+      /**
+       * <code>optional int32 marginLeft = 11;</code>
+       */
+      public Builder clearMarginLeft() {
+        copyOnWrite();
+        instance.clearMarginLeft();
+        return this;
+      }
+
+      /**
+       * <code>optional int32 marginRight = 12;</code>
+       */
+      public int getMarginRight() {
+        return instance.getMarginRight();
+      }
+      /**
+       * <code>optional int32 marginRight = 12;</code>
+       */
+      public Builder setMarginRight(int value) {
+        copyOnWrite();
+        instance.setMarginRight(value);
+        return this;
+      }
+      /**
+       * <code>optional int32 marginRight = 12;</code>
+       */
+      public Builder clearMarginRight() {
+        copyOnWrite();
+        instance.clearMarginRight();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:View)
     }
     protected final Object dynamicMethod(
@@ -1007,6 +1297,16 @@ public final class ProteusLayout {
               other.paddingBottom_ != 0, other.paddingBottom_);
           elevation_ = visitor.visitInt(elevation_ != 0, elevation_,
               other.elevation_ != 0, other.elevation_);
+          borderWidth_ = visitor.visitInt(borderWidth_ != 0, borderWidth_,
+              other.borderWidth_ != 0, other.borderWidth_);
+          borderColor_ = visitor.visitInt(borderColor_ != 0, borderColor_,
+              other.borderColor_ != 0, other.borderColor_);
+          borderBackgroundColor_ = visitor.visitInt(borderBackgroundColor_ != 0, borderBackgroundColor_,
+              other.borderBackgroundColor_ != 0, other.borderBackgroundColor_);
+          marginLeft_ = visitor.visitInt(marginLeft_ != 0, marginLeft_,
+              other.marginLeft_ != 0, other.marginLeft_);
+          marginRight_ = visitor.visitInt(marginRight_ != 0, marginRight_,
+              other.marginRight_ != 0, other.marginRight_);
           if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
               .INSTANCE) {
           }
@@ -1072,6 +1372,31 @@ public final class ProteusLayout {
                 case 56: {
 
                   elevation_ = input.readInt32();
+                  break;
+                }
+                case 64: {
+
+                  borderWidth_ = input.readInt32();
+                  break;
+                }
+                case 72: {
+
+                  borderColor_ = input.readInt32();
+                  break;
+                }
+                case 80: {
+
+                  borderBackgroundColor_ = input.readInt32();
+                  break;
+                }
+                case 88: {
+
+                  marginLeft_ = input.readInt32();
+                  break;
+                }
+                case 96: {
+
+                  marginRight_ = input.readInt32();
                   break;
                 }
               }
@@ -4143,6 +4468,333 @@ public final class ProteusLayout {
     }
   }
 
+  public interface ScrollViewOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ScrollView)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>optional .ViewGroup viewGroup = 1;</code>
+     */
+    boolean hasViewGroup();
+    /**
+     * <code>optional .ViewGroup viewGroup = 1;</code>
+     */
+    com.flipkart.android.proteusproto.models.ProteusLayout.ViewGroup getViewGroup();
+  }
+  /**
+   * Protobuf type {@code ScrollView}
+   */
+  public  static final class ScrollView extends
+      com.google.protobuf.GeneratedMessageLite<
+          ScrollView, ScrollView.Builder> implements
+      // @@protoc_insertion_point(message_implements:ScrollView)
+      ScrollViewOrBuilder {
+    private ScrollView() {
+    }
+    public static final int VIEWGROUP_FIELD_NUMBER = 1;
+    private com.flipkart.android.proteusproto.models.ProteusLayout.ViewGroup viewGroup_;
+    /**
+     * <code>optional .ViewGroup viewGroup = 1;</code>
+     */
+    public boolean hasViewGroup() {
+      return viewGroup_ != null;
+    }
+    /**
+     * <code>optional .ViewGroup viewGroup = 1;</code>
+     */
+    public com.flipkart.android.proteusproto.models.ProteusLayout.ViewGroup getViewGroup() {
+      return viewGroup_ == null ? com.flipkart.android.proteusproto.models.ProteusLayout.ViewGroup.getDefaultInstance() : viewGroup_;
+    }
+    /**
+     * <code>optional .ViewGroup viewGroup = 1;</code>
+     */
+    private void setViewGroup(com.flipkart.android.proteusproto.models.ProteusLayout.ViewGroup value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      viewGroup_ = value;
+      
+      }
+    /**
+     * <code>optional .ViewGroup viewGroup = 1;</code>
+     */
+    private void setViewGroup(
+        com.flipkart.android.proteusproto.models.ProteusLayout.ViewGroup.Builder builderForValue) {
+      viewGroup_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .ViewGroup viewGroup = 1;</code>
+     */
+    private void mergeViewGroup(com.flipkart.android.proteusproto.models.ProteusLayout.ViewGroup value) {
+      if (viewGroup_ != null &&
+          viewGroup_ != com.flipkart.android.proteusproto.models.ProteusLayout.ViewGroup.getDefaultInstance()) {
+        viewGroup_ =
+          com.flipkart.android.proteusproto.models.ProteusLayout.ViewGroup.newBuilder(viewGroup_).mergeFrom(value).buildPartial();
+      } else {
+        viewGroup_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .ViewGroup viewGroup = 1;</code>
+     */
+    private void clearViewGroup() {  viewGroup_ = null;
+      
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (viewGroup_ != null) {
+        output.writeMessage(1, getViewGroup());
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (viewGroup_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getViewGroup());
+      }
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code ScrollView}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView, Builder> implements
+        // @@protoc_insertion_point(builder_implements:ScrollView)
+        com.flipkart.android.proteusproto.models.ProteusLayout.ScrollViewOrBuilder {
+      // Construct using com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>optional .ViewGroup viewGroup = 1;</code>
+       */
+      public boolean hasViewGroup() {
+        return instance.hasViewGroup();
+      }
+      /**
+       * <code>optional .ViewGroup viewGroup = 1;</code>
+       */
+      public com.flipkart.android.proteusproto.models.ProteusLayout.ViewGroup getViewGroup() {
+        return instance.getViewGroup();
+      }
+      /**
+       * <code>optional .ViewGroup viewGroup = 1;</code>
+       */
+      public Builder setViewGroup(com.flipkart.android.proteusproto.models.ProteusLayout.ViewGroup value) {
+        copyOnWrite();
+        instance.setViewGroup(value);
+        return this;
+        }
+      /**
+       * <code>optional .ViewGroup viewGroup = 1;</code>
+       */
+      public Builder setViewGroup(
+          com.flipkart.android.proteusproto.models.ProteusLayout.ViewGroup.Builder builderForValue) {
+        copyOnWrite();
+        instance.setViewGroup(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .ViewGroup viewGroup = 1;</code>
+       */
+      public Builder mergeViewGroup(com.flipkart.android.proteusproto.models.ProteusLayout.ViewGroup value) {
+        copyOnWrite();
+        instance.mergeViewGroup(value);
+        return this;
+      }
+      /**
+       * <code>optional .ViewGroup viewGroup = 1;</code>
+       */
+      public Builder clearViewGroup() {  copyOnWrite();
+        instance.clearViewGroup();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ScrollView)
+    }
+    protected final Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView other = (com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView) arg1;
+          viewGroup_ = visitor.visitMessage(viewGroup_, other.viewGroup_);
+          if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+                case 10: {
+                  com.flipkart.android.proteusproto.models.ProteusLayout.ViewGroup.Builder subBuilder = null;
+                  if (viewGroup_ != null) {
+                    subBuilder = viewGroup_.toBuilder();
+                  }
+                  viewGroup_ = input.readMessage(com.flipkart.android.proteusproto.models.ProteusLayout.ViewGroup.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(viewGroup_);
+                    viewGroup_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:ScrollView)
+    private static final com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new ScrollView();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<ScrollView> PARSER;
+
+    public static com.google.protobuf.Parser<ScrollView> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
   public interface AnyViewOrViewGroupOrBuilder extends
       // @@protoc_insertion_point(interface_extends:AnyViewOrViewGroup)
       com.google.protobuf.MessageLiteOrBuilder {
@@ -4182,6 +4834,11 @@ public final class ProteusLayout {
      */
     com.flipkart.android.proteusproto.models.ProteusLayout.ImageView getImageView();
 
+    /**
+     * <code>optional .ScrollView scrollView = 8;</code>
+     */
+    com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView getScrollView();
+
     public com.flipkart.android.proteusproto.models.ProteusLayout.AnyViewOrViewGroup.ViewOrViewGroupTypeCase getViewOrViewGroupTypeCase();
   }
   /**
@@ -4205,6 +4862,7 @@ public final class ProteusLayout {
       VIEW(5),
       VIEWGROUP(6),
       IMAGEVIEW(7),
+      SCROLLVIEW(8),
       VIEWORVIEWGROUPTYPE_NOT_SET(0);
       private final int value;
       private ViewOrViewGroupTypeCase(int value) {
@@ -4227,6 +4885,7 @@ public final class ProteusLayout {
           case 5: return VIEW;
           case 6: return VIEWGROUP;
           case 7: return IMAGEVIEW;
+          case 8: return SCROLLVIEW;
           case 0: return VIEWORVIEWGROUPTYPE_NOT_SET;
           default: return null;
         }
@@ -4604,6 +5263,57 @@ public final class ProteusLayout {
       }
     }
 
+    public static final int SCROLLVIEW_FIELD_NUMBER = 8;
+    /**
+     * <code>optional .ScrollView scrollView = 8;</code>
+     */
+    public com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView getScrollView() {
+      if (viewOrViewGroupTypeCase_ == 8) {
+         return (com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView) viewOrViewGroupType_;
+      }
+      return com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView.getDefaultInstance();
+    }
+    /**
+     * <code>optional .ScrollView scrollView = 8;</code>
+     */
+    private void setScrollView(com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      viewOrViewGroupType_ = value;
+      viewOrViewGroupTypeCase_ = 8;
+    }
+    /**
+     * <code>optional .ScrollView scrollView = 8;</code>
+     */
+    private void setScrollView(
+        com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView.Builder builderForValue) {
+      viewOrViewGroupType_ = builderForValue.build();
+      viewOrViewGroupTypeCase_ = 8;
+    }
+    /**
+     * <code>optional .ScrollView scrollView = 8;</code>
+     */
+    private void mergeScrollView(com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView value) {
+      if (viewOrViewGroupTypeCase_ == 8 &&
+          viewOrViewGroupType_ != com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView.getDefaultInstance()) {
+        viewOrViewGroupType_ = com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView.newBuilder((com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView) viewOrViewGroupType_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        viewOrViewGroupType_ = value;
+      }
+      viewOrViewGroupTypeCase_ = 8;
+    }
+    /**
+     * <code>optional .ScrollView scrollView = 8;</code>
+     */
+    private void clearScrollView() {
+      if (viewOrViewGroupTypeCase_ == 8) {
+        viewOrViewGroupTypeCase_ = 0;
+        viewOrViewGroupType_ = null;
+      }
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (viewOrViewGroupTypeCase_ == 1) {
@@ -4626,6 +5336,9 @@ public final class ProteusLayout {
       }
       if (viewOrViewGroupTypeCase_ == 7) {
         output.writeMessage(7, (com.flipkart.android.proteusproto.models.ProteusLayout.ImageView) viewOrViewGroupType_);
+      }
+      if (viewOrViewGroupTypeCase_ == 8) {
+        output.writeMessage(8, (com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView) viewOrViewGroupType_);
       }
     }
 
@@ -4661,6 +5374,10 @@ public final class ProteusLayout {
       if (viewOrViewGroupTypeCase_ == 7) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(7, (com.flipkart.android.proteusproto.models.ProteusLayout.ImageView) viewOrViewGroupType_);
+      }
+      if (viewOrViewGroupTypeCase_ == 8) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, (com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView) viewOrViewGroupType_);
       }
       memoizedSerializedSize = size;
       return size;
@@ -5039,6 +5756,46 @@ public final class ProteusLayout {
         return this;
       }
 
+      /**
+       * <code>optional .ScrollView scrollView = 8;</code>
+       */
+      public com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView getScrollView() {
+        return instance.getScrollView();
+      }
+      /**
+       * <code>optional .ScrollView scrollView = 8;</code>
+       */
+      public Builder setScrollView(com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView value) {
+        copyOnWrite();
+        instance.setScrollView(value);
+        return this;
+      }
+      /**
+       * <code>optional .ScrollView scrollView = 8;</code>
+       */
+      public Builder setScrollView(
+          com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView.Builder builderForValue) {
+        copyOnWrite();
+        instance.setScrollView(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .ScrollView scrollView = 8;</code>
+       */
+      public Builder mergeScrollView(com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView value) {
+        copyOnWrite();
+        instance.mergeScrollView(value);
+        return this;
+      }
+      /**
+       * <code>optional .ScrollView scrollView = 8;</code>
+       */
+      public Builder clearScrollView() {
+        copyOnWrite();
+        instance.clearScrollView();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:AnyViewOrViewGroup)
     }
     protected final Object dynamicMethod(
@@ -5106,6 +5863,13 @@ public final class ProteusLayout {
             case IMAGEVIEW: {
               viewOrViewGroupType_ = visitor.visitOneofMessage(
                   viewOrViewGroupTypeCase_ == 7,
+                  viewOrViewGroupType_,
+                  other.viewOrViewGroupType_);
+              break;
+            }
+            case SCROLLVIEW: {
+              viewOrViewGroupType_ = visitor.visitOneofMessage(
+                  viewOrViewGroupTypeCase_ == 8,
                   viewOrViewGroupType_,
                   other.viewOrViewGroupType_);
               break;
@@ -5238,6 +6002,20 @@ public final class ProteusLayout {
                     viewOrViewGroupType_ = subBuilder.buildPartial();
                   }
                   viewOrViewGroupTypeCase_ = 7;
+                  break;
+                }
+                case 66: {
+                  com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView.Builder subBuilder = null;
+                  if (viewOrViewGroupTypeCase_ == 8) {
+                    subBuilder = ((com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView) viewOrViewGroupType_).toBuilder();
+                  }
+                  viewOrViewGroupType_ =
+                       input.readMessage(com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom((com.flipkart.android.proteusproto.models.ProteusLayout.ScrollView) viewOrViewGroupType_);
+                    viewOrViewGroupType_ = subBuilder.buildPartial();
+                  }
+                  viewOrViewGroupTypeCase_ = 8;
                   break;
                 }
               }
