@@ -50,6 +50,9 @@ public class TextViewHandler extends ViewHandler {
         if (textViewLayoutInfo.getIsHtmlText()) {
             textView.setText(Html.fromHtml(textViewLayoutInfo.getText()));
         }
+        if (0 != textViewLayoutInfo.getTextColor()) {
+            textView.setTextColor(textViewLayoutInfo.getTextColor());
+        }
         return super.handleViewAttributes(view, textViewLayoutInfo.getView(), parentView);
     }
 

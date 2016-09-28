@@ -59,9 +59,7 @@ abstract class ViewHandler extends LayoutHandlerImpl {
             view.setBackgroundColor(viewAttributes.getBackgroundColor());
         }
 
-        if (0 != viewAttributes.getPaddingLeft() && 0 != viewAttributes.getPaddingRight() && 0 != viewAttributes.getPaddingTop() && 0 != viewAttributes.getPaddingBottom()) {
-            view.setPadding(viewAttributes.getPaddingLeft(), viewAttributes.getPaddingTop(), viewAttributes.getPaddingRight(), viewAttributes.getPaddingBottom());
-        }
+        view.setPadding(viewAttributes.getPaddingLeft(), viewAttributes.getPaddingTop(), viewAttributes.getPaddingRight(), viewAttributes.getPaddingBottom());
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && 0 != viewAttributes.getElevation()) {
             view.setElevation(viewAttributes.getElevation());

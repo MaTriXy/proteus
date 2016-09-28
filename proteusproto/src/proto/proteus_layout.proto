@@ -43,6 +43,11 @@ message TextView {
     bool isHtmlText = 7;
 }
 
+message ImageView {
+    View view = 1;
+    int32 src = 2;
+}
+
 message Button {
     View view = 1;
     string text = 2;
@@ -58,5 +63,6 @@ message AnyViewOrViewGroup {
         Button button = 4;
         View view = 5;
         ViewGroup viewGroup = 6;
+        ImageView imageView = 7;
     }
 }

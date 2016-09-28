@@ -29,6 +29,7 @@ import com.flipkart.android.proteus.view.ProteusView;
 import com.flipkart.android.proteusproto.builder.LayoutBuilderImpl;
 import com.flipkart.android.proteusproto.models.ProteusLayout;
 import com.flipkart.android.proteusproto.parser.FrameLayoutHandler;
+import com.flipkart.android.proteusproto.parser.ImageViewHandler;
 import com.flipkart.android.proteusproto.parser.LinearLayoutHandler;
 import com.flipkart.android.proteusproto.parser.TextViewHandler;
 import com.flipkart.android.proteusproto.providers.LayoutImpl;
@@ -54,8 +55,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 List<ProteusLayout.AnyViewOrViewGroup> anyViewOrViewGroups = new ArrayList<>();
 
-                anyViewOrViewGroups.add(generateProteusTextView(-1, 0, "TextView", Color.WHITE, 0, 0, 40, 0, 4, 4, 0, false));
-                anyViewOrViewGroups.add(generateProteusTextView(-1, 0, "<b>TextView</b> with <font color=#cc8322><i>HTML</i></font> content.", Color.WHITE, 0, 0, 10, 60, 4, 4, 5, true));
+                anyViewOrViewGroups.add(generateProteusTextView(-1, 0, "TextView", Color.WHITE, 0, 0, 40, 0, 4, 4, 0, false, 0));
+                anyViewOrViewGroups.add(generateProteusTextView(-1, 0, "<b>TextView</b> with <font color=#cc8322><i>HTML</i></font> content.", Color.WHITE, 0, 0, 0, 0, 4, 4, 5, true, 0));
+                anyViewOrViewGroups.add(generateProteusImageView(300, 300, null, Color.TRANSPARENT, 0, 0, 0, 30, 4, 4, 5, false));
                 anyViewOrViewGroups.add(generateProteusLinearHorizontalLayoutWithTextViews());
 
                 ProteusLayout.AnyViewOrViewGroup proteusLayout = generateProteusFrameLayoutWith(generateProteusLinearLayoutVertical(anyViewOrViewGroups));
@@ -87,7 +89,12 @@ public class MainActivity extends AppCompatActivity {
         layoutBuilder.registerHandler("LINEARLAYOUT", new LinearLayoutHandler());
         layoutBuilder.registerHandler("TEXTVIEW", new TextViewHandler());
         layoutBuilder.registerHandler("BUTTON", null);
+        layoutBuilder.registerHandler("IMAGEVIEW", new ImageViewHandler());
         // get the proteusView from layout
+        return getBuild(layout, layoutBuilder);
+    }
+
+    private ProteusView getBuild(Layout layout, LayoutBuilder layoutBuilder) {
         return layoutBuilder.build(containerView, layout, null, 0, null);
     }
 
@@ -160,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private ProteusLayout.AnyViewOrViewGroup generateProteusTextView(int width, int height, String text, int backgroundColor, int weight, int textSize,
-                                                                     int pT, int pB, int pR, int pL, int gravity, boolean isHtml) {
+                                                                     int pT, int pB, int pR, int pL, int gravity, boolean isHtml, int textColor) {
         ProteusLayout.LayoutParams textViewParams = ProteusLayout.LayoutParams
                 .getDefaultInstance()
                 .newBuilderForType()
@@ -184,17 +191,46 @@ public class MainActivity extends AppCompatActivity {
                 .setText(text)
                 .setIsHtmlText(isHtml)
                 .setTextSize(textSize)
+                .setTextColor(textColor)
                 .setTextBackground(backgroundColor)
                 .setGravity(gravity)
                 .build();
         return ProteusLayout.AnyViewOrViewGroup.getDefaultInstance().newBuilderForType().setTextView(textView).build();
     }
 
+    private ProteusLayout.AnyViewOrViewGroup generateProteusImageView(int width, int height, String text, int backgroundColor, int weight, int textSize,
+                                                                      int pT, int pB, int pR, int pL, int gravity, boolean isHtml) {
+        ProteusLayout.LayoutParams imageViewParams = ProteusLayout.LayoutParams
+                .getDefaultInstance()
+                .newBuilderForType()
+                .setLayoutWidth(width)
+                .setLayoutHeight(height)
+                .setWeight(weight)
+                .build();
+        ProteusLayout.View imageViewView = ProteusLayout.View
+                .getDefaultInstance()
+                .newBuilderForType()
+                .setLayoutParams(imageViewParams)
+                .setPaddingTop(pT)
+                .setPaddingBottom(pB)
+                .setPaddingRight(pR)
+                .setPaddingLeft(pL)
+                .setBackgroundColor(backgroundColor)
+                .build();
+        ProteusLayout.ImageView imageView = ProteusLayout.ImageView
+                .getDefaultInstance()
+                .newBuilderForType()
+                .setView(imageViewView)
+                .setSrc(R.drawable.github_icon)
+                .build();
+        return ProteusLayout.AnyViewOrViewGroup.getDefaultInstance().newBuilderForType().setImageView(imageView).build();
+    }
+
     private ProteusLayout.AnyViewOrViewGroup generateProteusLinearHorizontalLayoutWithTextViews() {
         List<ProteusLayout.AnyViewOrViewGroup> anyViewOrViewGroups = new ArrayList<>();
-        anyViewOrViewGroups.add(generateProteusTextView(0, 0, "1", Color.parseColor("#d3d3d3"), 2, 0, 40, 40, 1, 1, 17, false)); // 17 for center
-        anyViewOrViewGroups.add(generateProteusTextView(0, 0, "2", Color.parseColor("#d3d3d3"), 3, 0, 40, 40, 1, 1, 17, false));
-        anyViewOrViewGroups.add(generateProteusTextView(0, 0, "3", Color.parseColor("#d3d3d3"), 4, 0, 40, 40, 1, 1, 17, false));
+        anyViewOrViewGroups.add(generateProteusTextView(0, 0, "1", Color.parseColor("#d3d3d3"), 2, 0, 40, 40, 1, 1, 17, false, Color.parseColor("#00a300"))); // 17 for center
+        anyViewOrViewGroups.add(generateProteusTextView(0, 0, "2", Color.parseColor("#d3d3d3"), 3, 0, 40, 40, 1, 1, 17, false, Color.parseColor("#00a300")));
+        anyViewOrViewGroups.add(generateProteusTextView(0, 0, "3", Color.parseColor("#d3d3d3"), 4, 0, 40, 40, 1, 1, 17, false, Color.parseColor("#00a300")));
         ProteusLayout.LayoutParams linearLayoutParams = ProteusLayout.LayoutParams
                 .getDefaultInstance()
                 .newBuilderForType()
