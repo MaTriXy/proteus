@@ -33,12 +33,11 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This class will help parsing by introducing processorNameMap. Any subclass can use addAttributeProcessor()
+ * This class will help parsing by introducing processors. Any subclass can use addAttributeProcessor()
  * method  to specify a callback for an attribute.
  * This class also creates an instance of the view with the first constructor.
  *
@@ -53,11 +52,7 @@ public abstract class BaseTypeParser<V extends View> implements TypeParser<V> {
 
     private boolean prepared;
 
-    private Map<String, AttributeProcessor> processorNameMap = new HashMap<>();
-    private Map<String, Integer> nameToIdMap = new HashMap<>();
-
-    protected AttributeProcessor[] processors = new AttributeProcessor[0];
-    protected int offset = 0;
+    private Map<Integer, AttributeProcessor> processors = new HashMap<>();
 
     @Override
     public void onBeforeCreateView(ViewGroup parent, LayoutParser layout, JsonObject data, Styles styles, int index) {
@@ -82,18 +77,13 @@ public abstract class BaseTypeParser<V extends View> implements TypeParser<V> {
 
     @Override
     public boolean handleAttribute(V view, String attribute, LayoutParser parser) {
-        AttributeProcessor attributeProcessor = processorNameMap.get(attribute);
+        AttributeProcessor attributeProcessor = processors.get(attribute.hashCode());
         if (attributeProcessor != null) {
             //noinspection unchecked
             attributeProcessor.handle(view, attribute, parser);
             return true;
         }
         return false;
-    }
-
-    @Override
-    public void minify(String attribute, LayoutParser parser) {
-        parser.setName(String.valueOf(nameToIdMap.get(attribute)));
     }
 
     @Override
@@ -121,22 +111,7 @@ public abstract class BaseTypeParser<V extends View> implements TypeParser<V> {
 
     @Override
     public void addAttributeProcessor(Attributes.Attribute key, AttributeProcessor<V> handler) {
-        processorNameMap.put(key.getName(), handler);
-        addAttributeProcessor(handler);
-        nameToIdMap.put(key.getName(), processors.length - 1);
-    }
-
-    private void addAttributeProcessor(AttributeProcessor<V> handler) {
-        processors = Arrays.copyOf(processors, processors.length + 1);
-        processors[processors.length - 1] = handler;
-    }
-
-    protected int getOffset() {
-        return offset;
-    }
-
-    protected int getAttributeProcessorCount() {
-        return processors.length;
+        processors.put(key.getName().hashCode(), handler);
     }
 
     protected ViewGroup.LayoutParams generateDefaultLayoutParams(ViewGroup parent) throws IOException, XmlPullParserException {

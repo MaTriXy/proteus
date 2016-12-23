@@ -69,14 +69,6 @@ public interface ProteusLayoutInflater {
     boolean handleAttribute(TypeParser handler, ProteusView view, String attribute, LayoutParser parser);
 
     /**
-     * @param handler
-     * @param attribute
-     * @param parser
-     * @return
-     */
-    void minifyAttribute(TypeParser handler, String attribute, LayoutParser parser);
-
-    /**
      * This methods builds a {@link ProteusView} from a layout {@link JsonObject} and data {@link JsonObject}.
      *
      * @param parent The intended parent view for the {@link View} that will be built.
@@ -87,8 +79,6 @@ public interface ProteusLayoutInflater {
      * @return A {@link ProteusView} with the built view, an array of its children and optionally its bindings.
      */
     ProteusView build(ViewGroup parent, LayoutParser layout, JsonObject data, Styles styles, int index);
-
-    void minify(LayoutParser parser);
 
     /**
      * Give the View ID for this string. This will generally be given by the instance of ID Generator

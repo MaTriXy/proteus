@@ -46,8 +46,6 @@ public interface TypeParser<V extends View> {
 
     boolean handleAttribute(V view, String attribute, LayoutParser parser);
 
-    void minify(String attribute, LayoutParser parser);
-
     boolean handleChildren(ProteusView view);
 
     boolean addView(ProteusView parent, ProteusView view);

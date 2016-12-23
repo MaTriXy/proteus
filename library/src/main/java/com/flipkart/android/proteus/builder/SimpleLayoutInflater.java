@@ -120,21 +120,6 @@ public class SimpleLayoutInflater implements ProteusLayoutInflater {
         return view;
     }
 
-    @Override
-    public void minify(LayoutParser parser) {
-        if (!parser.isLayout()) {
-            throw new IllegalArgumentException("parser did not return a layout: " + parser.toString());
-        }
-        String type = parser.getType();
-        TypeParser handler = layoutHandlers.get(type);
-        if (null != handler) {
-            while (parser.hasNext()) {
-                parser.next();
-                minifyAttribute(handler, parser.getName(), parser);
-            }
-        }
-    }
-
     protected void onBeforeCreateView(TypeParser handler, ViewGroup parent, LayoutParser parser, JsonObject data, int index, Styles styles) {
         handler.onBeforeCreateView(parent, parser, data, styles, index);
     }
@@ -174,11 +159,6 @@ public class SimpleLayoutInflater implements ProteusLayoutInflater {
         }
         //noinspection unchecked
         return handler.handleAttribute((View) view, attribute, parser);
-    }
-
-    @Override
-    public void minifyAttribute(TypeParser handler, String attribute, LayoutParser parser) {
-        handler.minify(attribute, parser);
     }
 
     protected void onUnknownAttributeEncountered(ProteusView view, String attribute, LayoutParser parser) {

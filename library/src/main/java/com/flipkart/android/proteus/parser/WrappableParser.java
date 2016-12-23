@@ -36,7 +36,6 @@ public abstract class WrappableParser<V extends View> extends BaseTypeParser<V> 
     public void prepare() {
         if (wrappedParser != null) {
             wrappedParser.prepare();
-            offset = wrappedParser.getOffset() - wrappedParser.getAttributeProcessorCount();
         }
         super.prepare();
     }
