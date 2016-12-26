@@ -31,6 +31,10 @@ public class JsonLayoutParser implements LayoutParser {
     public JsonLayoutParser(JsonElement element) {
         this.element = element;
         this.current = element;
+        init();
+    }
+
+    private void init() {
         if (element.isJsonArray()) {
             arrayIterator = element.getAsJsonArray().iterator();
             entriesIterator = null;
@@ -255,6 +259,13 @@ public class JsonLayoutParser implements LayoutParser {
     @Override
     public void addAttribute(String name, Object value) {
         ((JsonObject) element).add(name, (JsonElement) value);
+    }
+
+    @Override
+    public void reset() {
+        current = element;
+        name = null;
+        init();
     }
 
     @Override

@@ -89,6 +89,8 @@ public interface LayoutParser extends Cloneable {
 
     void addAttribute(String name, Object value);
 
+    void reset();
+
     String toString();
 
     LayoutParser merge(@Nullable Object layout);
