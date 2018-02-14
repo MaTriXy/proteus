@@ -12,11 +12,13 @@
       "background": "#efefef",
       "children": [
         {
-          "type": "FrameLayout",
+          "type": "CardView",
           "layout_width": "match_parent",
           "layout_height": "wrap_content",
-          "padding": "16dp",
-          "paddingBottom": "0dp",
+          "contentPadding": "16dp",
+          "cardBackgroundColor": "#88ff99bb",
+          "cardElevation": "2dp",
+          "cardCornerRadius": "16dp",
           "children": [
             {
               "type": "LinearLayout",
@@ -28,6 +30,7 @@
               "children": [
                 {
                   "type": "TextView",
+                  "singleLine": "@bool/true",
                   "text": "TextView",
                   "textColor": "#000000",
                   "textSize": "12sp"
@@ -41,8 +44,8 @@
                 },
                 {
                   "type": "ImageView",
-                  "layout_width": "60dp",
-                  "layout_height": "60dp",
+                  "layout_width": "@dimen/sixty",
+                  "layout_height": "@dimen/sixty",
                   "src": "@drawable/github_icon",
                   "onClick": {
                     "someKey": "someValue"
@@ -61,29 +64,9 @@
                       "layout_height": "32dp",
                       "textSize": "12sp",
                       "textColor": "#2cdb81",
-                      "text": "1",
-                      "layout_weight": "1",
-                      "gravity": "center",
-                      "border": {
-                        "width": "2dp",
-                        "color": "#cccccc",
-                        "bgColor": "#efefef"
-                      }
-                    },
-                    {
-                      "type": "TextView",
-                      "layout_height": "32dp",
-                      "layout_marginRight": "8dp",
-                      "textSize": "12sp",
-                      "textColor": "#2cdb81",
                       "text": "2",
-                      "layout_weight": "2",
-                      "gravity": "center",
-                      "border": {
-                        "width": "2dp",
-                        "color": "#cccccc",
-                        "bgColor": "#efefef"
-                      }
+                      "layout_weight": "1",
+                      "gravity": "center"
                     },
                     {
                       "type": "TextView",
@@ -91,37 +74,50 @@
                       "layout_marginRight": "8dp",
                       "textSize": "12sp",
                       "textColor": "#2cdb81",
-                      "text": "3",
+                      "text": "@{fn:add(2,2)}",
+                      "layout_weight": "2",
+                      "gravity": "center"
+                    },
+                    {
+                      "type": "TextView",
+                      "layout_height": "32dp",
+                      "layout_marginRight": "8dp",
+                      "textSize": "12sp",
+                      "textColor": "#2cdb81",
+                      "data": {
+                        "value": "@{fn:mul(2,2,2)}"
+                      },
+                      "text": "@{fn:number(@{value})}",
                       "layout_weight": "3",
-                      "gravity": "center",
-                      "border": {
-                        "width": "2dp",
-                        "color": "#cccccc",
-                        "bgColor": "#efefef"
-                      }
+                      "gravity": "center"
                     }
                   ]
                 },
                 {
                   "type": "Button",
-                  "layout_height": "50dp",
+                  "layout_height": "?Theme_AppCompat:actionBarSize",
                   "layout_width": "150dp",
                   "gravity": "center",
-                  "layout_marginTop" : "10dp",
-                  "text" : "ADD TO CART",
-                  "background" : {
-                    "type" : "ripple",
-                    "content": {
-                      "type": "shape",
-                      "shape": "rectangle",
-                      "children": [
-                        {
-                          "type": "solid",
-                          "color": "#F2575B"
-                        }
-                      ]
-                    },
-                    "color": "#f0f0f0"
+                  "layout_marginTop": "10dp",
+                  "text": "ADD TO CART",
+                  "textColor": "?Theme_AppCompat:actionMenuTextColor",
+                  "background": {
+                    "@": {
+                      "type": "ripple",
+                      "mask": "#aaaa99",
+                      "defaultBackground": "#aaaa99",
+                      "content": {
+                        "type": "shape",
+                        "shape": "rectangle",
+                        "children": [
+                          {
+                            "type": "solid",
+                            "color": "@{theme.color}"
+                          }
+                        ]
+                      },
+                      "color": "#ff0000"
+                    }
                   }
                 }
               ]
@@ -129,17 +125,33 @@
           ]
         },
         {
-          "type": "RelativeLayoutExample",
+          "type": "include",
+          "layout": "RelativeLayoutExample",
           "padding": "16dp",
           "paddingBottom": "0dp"
         },
         {
-          "type": "SimpleDataBindingExample",
+          "type": "include",
+          "layout": "SimpleDataBindingExample",
           "padding": "16dp",
-          "paddingBottom": "0dp"
+          "paddingBottom": "0dp",
+          "data": {
+            "user": "@{0}",
+            "sec": "@{sec}"
+          }
         },
         {
-          "type": "DataDrivenExample",
+          "type": "include",
+          "layout": "DataDrivenExample",
+          "padding": "16dp",
+          "paddingBottom": "0dp",
+          "data": {
+            "user": "@{0}"
+          }
+        },
+        {
+          "type": "include",
+          "layout": "RecyclerViewExample",
           "padding": "16dp",
           "paddingBottom": "0dp"
         },

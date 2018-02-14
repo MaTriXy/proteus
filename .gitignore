@@ -11,4 +11,5 @@ out/
 .DS_Store
 /*/*.iml
 *.iml
-
+/captures
+npm-debug.log
