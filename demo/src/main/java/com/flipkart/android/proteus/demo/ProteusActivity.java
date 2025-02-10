@@ -1,393 +1,224 @@
 /*
- * Apache License
- * Version 2.0, January 2004
- * http://www.apache.org/licenses/LICENSE-2.0
+ * Copyright 2019 Flipkart Internet Pvt. Ltd.
  *
- * TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * Copyright (c) 2017 Flipkart Internet Pvt. Ltd.
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use
- * this file except in compliance with the License. You may obtain a copy of the
- * License at http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed
- * under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
- * CONDITIONS OF ANY KIND, either express or implied. See the License for the
- * specific language governing permissions and limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package com.flipkart.android.proteus.demo;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.flipkart.android.proteus.LayoutManager;
-import com.flipkart.android.proteus.Proteus;
-import com.flipkart.android.proteus.ProteusBuilder;
 import com.flipkart.android.proteus.ProteusContext;
 import com.flipkart.android.proteus.ProteusLayoutInflater;
 import com.flipkart.android.proteus.ProteusView;
 import com.flipkart.android.proteus.StyleManager;
 import com.flipkart.android.proteus.Styles;
-import com.flipkart.android.proteus.demo.converter.GsonConverterFactory;
-import com.flipkart.android.proteus.demo.models.JsonResource;
-import com.flipkart.android.proteus.gson.ProteusTypeAdapterFactory;
-import com.flipkart.android.proteus.support.design.DesignModule;
-import com.flipkart.android.proteus.support.v4.SupportV4Module;
-import com.flipkart.android.proteus.support.v7.CardViewModule;
-import com.flipkart.android.proteus.support.v7.RecyclerViewModule;
+import com.flipkart.android.proteus.demo.api.ProteusManager;
+import com.flipkart.android.proteus.demo.utils.GlideApp;
+import com.flipkart.android.proteus.demo.utils.ImageLoaderTarget;
+import com.flipkart.android.proteus.exceptions.ProteusInflateException;
 import com.flipkart.android.proteus.value.DrawableValue;
 import com.flipkart.android.proteus.value.Layout;
 import com.flipkart.android.proteus.value.ObjectValue;
 import com.flipkart.android.proteus.value.Value;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.HashMap;
 import java.util.Map;
 
-import retrofit2.Call;
-import retrofit2.Retrofit;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+public class ProteusActivity extends AppCompatActivity implements ProteusManager.Listener {
 
-public class ProteusActivity extends AppCompatActivity {
+  private ProteusManager proteusManager;
+  private ProteusLayoutInflater layoutInflater;
 
-    private static final String BASE_URL = "http://10.0.2.2:8080/data/";
+  ObjectValue data;
+  Layout layout;
+  Styles styles;
+  Map<String, Layout> layouts;
 
-    private Retrofit retrofit;
-    JsonResource resources;
+  private StyleManager styleManager = new StyleManager() {
 
-    private ProteusTypeAdapterFactory adapter;
-
-    private ViewGroup container;
-
-    private ProteusLayoutInflater layoutInflater;
-
-    ObjectValue data;
-    Layout layout;
-    ProteusView view;
-
-    Styles styles;
-    Map<String, Layout> layouts;
-
-    private StyleManager styleManager = new StyleManager() {
-
-        @Nullable
-        @Override
-        protected Styles getStyles() {
-            return styles;
-        }
-    };
-
-    private LayoutManager layoutManager = new LayoutManager() {
-
-        @Nullable
-        @Override
-        protected Map<String, Layout> getLayouts() {
-            return layouts;
-        }
-    };
-
-    /**
-     * Simple implementation of ImageLoader for loading images from url in background.
-     */
-    private ProteusLayoutInflater.ImageLoader loader = new ProteusLayoutInflater.ImageLoader() {
-        @Override
-        public void getBitmap(ProteusView view, String url, final DrawableValue.AsyncCallback callback) {
-            URL _url;
-
-            try {
-                _url = new URL(url);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-                return;
-            }
-
-            new AsyncTask<URL, Integer, Bitmap>() {
-                @Override
-                protected Bitmap doInBackground(URL... params) {
-                    if (isNetworkAvailable()) {
-                        try {
-                            return BitmapFactory.decodeStream(params[0].openConnection().getInputStream());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        Log.e("PROTEUS", "No network");
-                    }
-                    return null;
-                }
-
-                protected void onPostExecute(@Nullable Bitmap result) {
-                    if (result != null) {
-                        callback.setBitmap(result);
-                    } else {
-                        //noinspection deprecation
-                        callback.setDrawable(ProteusActivity.this.getResources().getDrawable(R.drawable.ic_launcher));
-                    }
-                }
-            }.execute(_url);
-        }
-    };
-
-    /**
-     * Implementation of Callback. This is where we get callbacks from proteus regarding
-     * errors and events.
-     */
-    private ProteusLayoutInflater.Callback callback = new ProteusLayoutInflater.Callback() {
-
-        @NonNull
-        @Override
-        public ProteusView onUnknownViewType(ProteusContext context, String type, Layout layout, ObjectValue data, int index) {
-            //noinspection ConstantConditions because we want to crash here
-            return null;
-        }
-
-        @NonNull
-        @Override
-        public void onEvent(String event, Value value, ProteusView view) {
-            try {
-                Log.i("ProteusEvent", value.toString());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    };
-
+    @Nullable
     @Override
-    protected void onStart() {
-        super.onStart();
-        if (null == retrofit) {
-            adapter = new ProteusTypeAdapterFactory(this);
-            Gson gson = new GsonBuilder()
-                    .registerTypeAdapterFactory(adapter)
-                    .create();
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create(gson))
-                    .build();
-        }
+    protected Styles getStyles() {
+      return styles;
+    }
+  };
 
-        if (null == resources) {
-            resources = retrofit.create(JsonResource.class);
-        }
+  private LayoutManager layoutManager = new LayoutManager() {
 
-        Proteus proteus = new ProteusBuilder()
-                .register(SupportV4Module.create())
-                .register(RecyclerViewModule.create())
-                .register(CardViewModule.create())
-                .register(DesignModule.create())
-                .register(new CircleViewParser())
-                .build();
+    @Nullable
+    @Override
+    protected Map<String, Layout> getLayouts() {
+      return layouts;
+    }
+  };
 
-        ProteusContext context = proteus.createContextBuilder(this)
-                .setLayoutManager(layoutManager)
-                .setCallback(callback)
-                .setImageLoader(loader)
-                .setStyleManager(styleManager)
-                .build();
+  /**
+   * Simple implementation of ImageLoader for loading images from url in background.
+   */
+  private ProteusLayoutInflater.ImageLoader loader = new ProteusLayoutInflater.ImageLoader() {
+    @Override
+    public void getBitmap(ProteusView view, String url, final DrawableValue.AsyncCallback callback) {
+      GlideApp.with(ProteusActivity.this)
+        .load(url)
+        .placeholder(R.drawable.placeholder)
+        .error(R.drawable.image_broken)
+        .into(new ImageLoaderTarget(callback));
+    }
+  };
 
-        layoutInflater = context.getInflater();
+  /**
+   * Implementation of Callback. This is where we get callbacks from proteus regarding
+   * errors and events.
+   */
+  private ProteusLayoutInflater.Callback callback = new ProteusLayoutInflater.Callback() {
 
-        ProteusTypeAdapterFactory.PROTEUS_INSTANCE_HOLDER.setProteus(proteus);
-
-        fetch();
+    @NonNull
+    @Override
+    public ProteusView onUnknownViewType(ProteusContext context, String type, Layout layout, ObjectValue data, int index) {
+      // TODO: instead return some implementation of an unknown view
+      throw new ProteusInflateException("Unknown view type '" + type + "' cannot be inflated");
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_proteus);
-
-        // set the toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        // setBoolean refresh button click
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fetch();
-            }
-        });
-
-        container = (ViewGroup) findViewById(R.id.content_main);
+    public void onEvent(String event, Value value, ProteusView view) {
+      Log.i("ProteusEvent", value.toString());
     }
+  };
 
-    void render() {
+  ProteusView view;
+  private ViewGroup container;
 
-        // remove the current view
-        container.removeAllViews();
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
 
-        // Inflate a new view using proteus
-        long start = System.currentTimeMillis();
-        view = layoutInflater.inflate(layout, data, container, 0);
-        System.out.println("render: " + (System.currentTimeMillis() - start));
+    setContentView(R.layout.activity_proteus);
 
-        container.addView(view.getAsView());
+    // set the toolbar
+    Toolbar toolbar = findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
 
-        // lets call GC for benchmarking purposes
-        // not required for release builds
-        System.gc();
-    }
+    // setBoolean refresh button click
+    FloatingActionButton fab = findViewById(R.id.fab);
+    fab.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        alert();
+      }
+    });
 
-    private void update() {
-        new AsyncTask<Void, Void, ObjectValue>() {
+    container = findViewById(R.id.content_main);
 
-            @Override
-            protected ObjectValue doInBackground(Void... params) {
-                try {
+    DemoApplication application = (DemoApplication) getApplication();
+    proteusManager = application.getProteusManager();
 
-                    Call<ObjectValue> callData = resources.get("update.json");
-                    return callData.execute().body();
+    ProteusContext context = proteusManager.getProteus().createContextBuilder(this)
+      .setLayoutManager(layoutManager)
+      .setCallback(callback)
+      .setImageLoader(loader)
+      .setStyleManager(styleManager)
+      .build();
 
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
+    layoutInflater = context.getInflater();
+  }
 
-            @Override
-            protected void onPostExecute(ObjectValue data) {
-                super.onPostExecute(data);
-                try {
-                    long start = System.currentTimeMillis();
-                    view.getViewManager().update(data);
-                    System.out.println("update: " + (System.currentTimeMillis() - start));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }.execute();
-    }
+  @Override
+  protected void onStart() {
+    super.onStart();
+    proteusManager.addListener(this);
+    proteusManager.load();
+  }
 
-    void fetch() {
-        new AsyncTask<Void, Void, Void>() {
+  @Override
+  protected void onPause() {
+    super.onPause();
+    proteusManager.removeListener(this);
+  }
 
-            @Override
-            protected Void doInBackground(Void... params) {
-                try {
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.main, menu);
+    return true;
+  }
 
-                    Call<ObjectValue> callData = resources.get("user.json");
-                    data = callData.execute().body();
-
-                    Call<Layout> callLayout = resources.getLayout();
-                    layout = callLayout.execute().body();
-
-                    Call<Map<String, Layout>> layoutsCall = resources.getLayouts();
-                    layouts = layoutsCall.execute().body();
-
-                    Call<Styles> stylesCall = resources.getStyles();
-                    styles = stylesCall.execute().body();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                try {
-                    render();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }.execute();
-    }
-
-    private void write() {
-        try {
-
-            long start;
-
-            start = System.currentTimeMillis();
-
-            String value = adapter.COMPILED_VALUE_TYPE_ADAPTER.toJson(layout);
-
-            System.out.println("write: " + (System.currentTimeMillis() - start));
-
-            System.out.println("\n\n** begin dump **\n\n");
-            System.out.println(value);
-            System.out.println("\n\n** end dump **\n\n");
-
-            Map<String, String> values = new HashMap<>(layouts.size());
-
-            for (Map.Entry<String, Layout> entry : layouts.entrySet()) {
-                values.put(entry.getKey(), adapter.COMPILED_VALUE_TYPE_ADAPTER.toJson(entry.getValue()));
-            }
-
-            start = System.currentTimeMillis();
-
-            layout = adapter.COMPILED_VALUE_TYPE_ADAPTER.fromJson(value).getAsLayout();
-
-            System.out.println("read: " + (System.currentTimeMillis() - start));
-
-            for (Map.Entry<String, String> entry : values.entrySet()) {
-                layouts.put(entry.getKey(), (Layout) adapter.COMPILED_VALUE_TYPE_ADAPTER.fromJson(entry.getValue()));
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    int id = item.getItemId();
+    switch (id) {
+      case R.id.reload:
+        reload();
         return true;
     }
+    return super.onOptionsItemSelected(item);
+  }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically setBoolean clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+  @Override
+  public void onLoad() {
+    data = proteusManager.getData();
+    layout = proteusManager.getRootLayout();
+    layouts = proteusManager.getLayouts();
+    styles = proteusManager.getStyles();
+    render();
+  }
 
-        //noinspection SimplifiableIfStatement
-        switch (id) {
-            case R.id.render:
-                render();
-                return true;
-            case R.id.update:
-                update();
-                return true;
-            case R.id.compile:
-                write();
-                return true;
+  @Override
+  public void onError(@NonNull Exception e) {
+    Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+  }
+
+  private void alert() {
+    ProteusView view = layoutInflater.inflate("AlertDialogLayout", data);
+    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    builder.setView(view.getAsView())
+      .setPositiveButton(R.string.action_alert_ok, new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialogInterface, int i) {
+          dialogInterface.dismiss();
         }
+      })
+      .show();
+  }
 
-        return super.onOptionsItemSelected(item);
-    }
+  void render() {
 
-    public boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
+    // remove the current view
+    container.removeAllViews();
+
+    // Inflate a new view using proteus
+    long start = System.currentTimeMillis();
+    view = layoutInflater.inflate(layout, data, container, 0);
+    System.out.println("inflate time: " + (System.currentTimeMillis() - start));
+
+    // Add the inflated view to the container
+    container.addView(view.getAsView());
+  }
+
+  void reload() {
+    proteusManager.update();
+  }
 }
